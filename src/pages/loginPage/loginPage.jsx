@@ -14,12 +14,13 @@ function LoginPage ( ) {
 
             
         
-        return(
-            <>
-                {
-                    isRegistred
-                        ? !isExist
-                            ?
+    return(
+        <>
+            12345687901
+            {
+                isRegistred
+                    ? !isExist
+                        ?
                             <IsExistForm
                                 isExist={isExist}
                                 setIsExist={setIsExist} 
@@ -36,13 +37,13 @@ function LoginPage ( ) {
                                 phoneNumber={phoneNumber}
                                 setPhoneNumber={setPhoneNumber} 
                             />
-                        : 
-                            <RegForm 
-                                phoneNumber={phoneNumber} 
-                                setPhoneNumber={setPhoneNumber}/>
-                                
-                }
-            </>
+                    : 
+                        <RegForm 
+                            phoneNumber={phoneNumber} 
+                            setPhoneNumber={setPhoneNumber}/>
+                            
+            }
+        </>
 
 
 )

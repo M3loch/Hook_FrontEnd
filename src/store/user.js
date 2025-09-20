@@ -1,4 +1,5 @@
 import AuthService from "../services/authService/authService"
+import ShopService from "../services/shopSevrice/shopService"
 import { makeAutoObservable, toJS } from "mobx"
 
 class User{
@@ -10,7 +11,7 @@ class User{
     firstName = undefined
     familyName = undefined
 
-    shops = []
+    _shops = []
 
     isAuth = false
 
@@ -68,14 +69,13 @@ class User{
         this.firstName = first_name
         this.familyName = family_name
         this.accessToken = access_token
-        for (let shop of shops){
-
-            this.shops.push(shop)
-        }
+        this._shops = shops
+        
     }
     
     _setIsAuth(bool){
         this.isAuth = bool
+        console.log(this.isAuth)
     }
 
     async isExist(phoneNumber){
@@ -107,11 +107,26 @@ class User{
         this.phone_number = undefined, 
         this.first_name = undefined, 
         this.family_name = undefined,
-        this.shops = undefined
+        this._shops = undefined
     }
 
-    get getShops(){
-        return toJS(this.shops)
+    get shops(){
+        return toJS(this._shops)
+    }
+    set shops(shops){
+        this._shops = shops
+    }
+
+    async createShop(shopName){
+        const newShopList = await ShopService.createShop({
+            userID: this.userID,
+            accessToken: this.accessToken,
+            shopName: shopName
+        })
+        newShopList
+            ? this.shops = newShopList
+            : null
+        return newShopList && true
     }
 
 }

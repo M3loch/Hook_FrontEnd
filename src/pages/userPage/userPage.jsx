@@ -1,24 +1,29 @@
 import { useContext, useState } from "react"
 import { Context } from "../../App"
 import ShopCard from "./widgets/ShopCard"
+import Button from "../../shared/Button"
+import NewShopModal from "./widgets/NewShopModal"
 
 function UserPage() {
-    const { user } = useContext(Context)
-    const shops = user.getShops
+    const { user, shop } = useContext(Context)
+
+    const [newShopModal, setNewShopModal] = useState(false)
+    const shops = user.shops
+    shop.user = user.userID
 
 
     return (
-        user.isAuth
+        !newShopModal
             ?
                 <>
-                    <p>user id = {user.userID}</p>
-                    <p>user phone number = {user.phoneNumber}</p>
+                    <p> hello {user.firstName} </p>
+                    <p> here's your shops: </p>
+                        
                     {shops.map((shop) => {return <ShopCard key={shop.shop_id} shopName={shop.shop_name} shopID={shop.shop_id}/> })}
-                    <p>user first name = {user.firstName}</p>
-                    <p>user family name = {user.familyName}</p>
-                    <p>user access token = {user.accessToken}</p>
+
+                    <Button innerText={'Создать новое заведение'} clickEvent={setNewShopModal} value={true} />
                 </>
-            : null
+            : <NewShopModal setNewShopModal={setNewShopModal}/>
 
     )
 }

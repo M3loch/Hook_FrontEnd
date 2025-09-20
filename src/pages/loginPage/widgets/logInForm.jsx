@@ -1,20 +1,12 @@
 import { useContext } from "react"
 import { Context } from "../../../App"
 import AcceptButton from "../shared/AcceptButton"
-import Input from "../shared/input"
+import Input from "../../../shared/Input"
 
 function LogInForm({ setIsExist, pass, setPass, phoneNumber, setPhoneNumber}) {
 
     
-    let { user } = useContext(Context)
-
-    function passSetter(value){
-        setPass(value)
-    }
-    
-    function phoneSetter(value){
-        setPhoneNumber(value)
-    }   
+    const { user } = useContext(Context)
 
     async function logIn([phoneNumber, pass]){
         setIsExist( await user.logIn(phoneNumber, pass) )
@@ -25,13 +17,13 @@ function LogInForm({ setIsExist, pass, setPass, phoneNumber, setPhoneNumber}) {
         <>
             < Input 
                 placeholder={'Номер телефона'} 
-                onChange={phoneSetter} 
-                vaule={phoneNumber}
+                onChange={setPhoneNumber} 
+                value={phoneNumber}
                 type="Text"
             />
             < Input 
                 placeholder={'Пароль'} 
-                onChange={passSetter} 
+                onChange={setPass} 
                 vaule={pass}
                 type="Password"
             />

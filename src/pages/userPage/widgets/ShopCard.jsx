@@ -1,14 +1,31 @@
+import { useContext } from "react"
+import { Context } from "../../../App"
+import { Link, Navigate } from "react-router"
 
 
 
 
 function ShopCard({shopName, shopID}){
 
+    const { shop } = useContext(Context)
+    
     return(
-        <div>
-            <p>{shopName}</p>
-            <p>{shopID}</p>
-        </div>
+        <Link to="/shop">
+            <div 
+                style={
+                    {
+                        background: "lightBlue",
+                        cursor: 'pointer'
+                    }
+                }
+                onClick={() => {
+                    shop.getShop(shopID);
+                }}
+            >
+                <p>{shopName}</p>
+                <p>{shopID}</p>
+            </div>
+        </Link>
     )
 }
 export default ShopCard

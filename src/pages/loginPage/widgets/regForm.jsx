@@ -1,4 +1,4 @@
-import Input from "../shared/input";
+import Input from "../../../shared/Input";
 import AcceptButton from "../shared/AcceptButton";
 import { useState, useContext } from "react";
 
