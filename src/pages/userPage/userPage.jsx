@@ -17,6 +17,8 @@ function UserPage() {
             ?
                 <>
                     <p> hello {user.firstName} </p>
+                    <p> ID {user.userID} </p>
+                    <p> token {user.accessToken} </p>
                     <p> here's your shops: </p>
                         
                     {shops.map((shop) => {return <ShopCard key={shop.shop_id} shopName={shop.shop_name} shopID={shop.shop_id}/> })}

@@ -1,5 +1,6 @@
 import ShopService from "../services/shopSevrice/shopService"
 import { makeAutoObservable, toJS } from "mobx";
+import OrderService from "../services/orderService/orderService";
 
 class Shop{
 
@@ -13,6 +14,7 @@ class Shop{
     _roles = undefined
     _ordersAttributes = undefined
     _roleName = undefined
+    _isChosen = false;
 
     constructor(){
         makeAutoObservable(this)
@@ -23,17 +25,18 @@ class Shop{
         this._user = user
     }
 
-    _setShop({shop_id, shop_name, tables, stages, discounts, roles, orders_attributes, role_name})
+    _setShop({shop_id, shop_name, tables, stages, discounts, roles, orders_attributes, role_name, categories})
     {
         this._shopID = shop_id
         this._shopName = shop_name
         this._roleName = role_name
-
+        this._categories = categories && categories
         this._tables = tables && tables 
         this._stages = stages && stages
         this._discounts = discounts && discounts
         this._roles = roles && roles
         this._ordersAttributes = orders_attributes && orders_attributes
+        this._isChosen = true
     }
 
     async getShop(shopID){
@@ -41,5 +44,27 @@ class Shop{
         this._setShop(shop)
     }
 
+    
+    async getOrders(){
+        return await OrderService.getOrders(this._shopID, this._user)
+    }
+    
+    get isChosen(){
+        return this._isChosen
+    }
+
+    get categories(){
+        return this._categories
+    }
+    get discounts(){
+        return this._discounts
+    }
+
+    get tables(){
+        return this._tables
+    }
+    get shopID(){
+        return this._shopID
+    }
 }
 export default Shop

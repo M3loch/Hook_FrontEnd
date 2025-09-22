@@ -1,6 +1,6 @@
 import { useContext } from "react"
 import { Context } from "../../../App"
-import { Link, Navigate } from "react-router"
+import { Link } from "react-router"
 
 
 

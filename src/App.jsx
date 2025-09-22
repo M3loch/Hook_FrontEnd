@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react'
+import { createContext, } from 'react'
 import { Routes, Route, Navigate } from 'react-router'
 import { observer } from 'mobx-react-lite'
 
@@ -27,7 +27,13 @@ function App() {
 
             <Route path='/me' element={!user.isAuth ? <Navigate to="/logIn" /> : <UserPage />}/>
             <Route path='/logIn' element={!user.isAuth ? <LoginPage /> : <Navigate to="/me" />}/>
-            <Route path='/shop' element={!user.isAuth ? <Navigate to="/logIn" /> : <ShopPage />}/>
+            <Route path='/shop' element={
+              !user.isAuth 
+                ? <Navigate to="/logIn" /> 
+                : shop.isChosen
+                  ? <ShopPage />
+                  : <ShopPage blank={true} />  
+              }/>
 
           </Route>
         </Routes>
