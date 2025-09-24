@@ -1,15 +1,19 @@
 function CheckBox({
-    innerText,
     onChange, 
     value, 
     }) {
     
-    function changeEvent(event) {
+    function changeEvent() {
         onChange(!value)
     }
 
     return (
-        <input type='checkbox' checked={value} name={innerText} value={value} onChange={changeEvent} />
+        <input 
+            type='checkbox' 
+            checked={value}
+            value={value} 
+            onChange={changeEvent} 
+        />
     )
 }
 

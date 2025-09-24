@@ -18,11 +18,9 @@ class OrderService {
     static async createOrder({
         userID, 
         shopID,
-        parentID = null,
-        childID = null,
         tableID = null,
-        discountIDs = null,
-        categoryIDs = null,
+        discountID = null,
+        categoryID = null,
         strength,
         flavoures = [],
         isPaid = false,
@@ -32,13 +30,11 @@ class OrderService {
         const startTime = Date.now()
 
         const requestBody = {
-            parent_id: parentID,
-            child_id: childID,
             shop_id: shopID,
             start_time : startTime, 
             table_id: tableID,
-            discount_id: discountIDs,
-            category_id: categoryIDs,
+            discount_id: discountID,
+            category_id: categoryID,
             strength: strength,
             flavoures: flavoures,
             is_paid: isPaid,

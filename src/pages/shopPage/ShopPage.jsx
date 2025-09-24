@@ -1,21 +1,32 @@
-import { useContext, useState } from "react"
+import { useContext, useState} from "react"
 import { Context } from "../../App"
-import { toJS } from "mobx"
-import OrderWindow from "./widgets/orderWindow"
-import ModalWindow from "./widgets/modalWindow"
+import OrderGrid from "./widgets/OrderGrid"
+import CreateOrderModal from "./widgets/CreateOrderModal"
 
 
-function ShopPage({blank = false}){
+function ShopPage(){
 
     const {shop} = useContext(Context)
 
-    if (blank) {
-        return <p>Not Chosen</p>
-    }
+    const [createOrderModal, setCreateOrderModal] = useState(false)
+    const [orders, setOrders] = useState([])
 
     return (
         <>
-        <OrderWindow />
+            <div>
+                ==ShopHeader==
+                <p>Shop Name = {shop.shopName}</p>
+                <p>Shop ID = {shop.shopID}</p>
+            </div>
+
+            {createOrderModal && <CreateOrderModal setOrders={setOrders} 
+                setCreateOrderModal={setCreateOrderModal}/>}
+
+            <OrderGrid
+                setCreateOrderModal={setCreateOrderModal}
+                orders={orders}
+                setOrders={setOrders}
+            />
         </>
 
     )

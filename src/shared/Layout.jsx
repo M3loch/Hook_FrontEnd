@@ -1,4 +1,4 @@
-import TestNav from "../shared/TestNav";
+import TestNav from "./TestNav";
 import { Outlet } from "react-router";
 
 function Layout(){

@@ -14,15 +14,19 @@ function TestNav(){
                     ?   
                         <>
                             <Link style={{marginLeft: '10px'}} to="/me">User</Link>
-                            <Link style={{marginLeft: '10px'}} to="/shop">Shop</Link>
                             <Link style={{marginLeft: '10px'}} to="/settings">User Settings</Link>
                         </>
                     : null
-            }
+                }
             {
                 shop.isChosen
-                    ? <Link style={{marginLeft: '10px'}} to="/shopSettings">Shop Settings</Link>
-                    : null
+                    ? 
+                        <>
+                            <Link style={{marginLeft: '10px'}} to="/shop">Shop</Link>
+                            <Link style={{marginLeft: '10px'}} to="/shopSettings">Shop Settings</Link>
+                        </>
+                    : 
+                        null
             }
         </div>
     )

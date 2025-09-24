@@ -1,25 +1,27 @@
-import { useContext } from "react";
-import Button from "../../../shared/Button";
-import { Context } from "../../../App";
-import OrderService from "../../../services/orderService/orderService";
-
-function Order({orderID, setOrders}){
-
-    const { shop, user } = useContext(Context)
-    
-    async function closeOrder({orderID, closeStatus, userID, shopID}){
-        const orders = await OrderService.closeOrder(orderID, closeStatus, userID, shopID)
-        setOrders(orders)
-    }
+import { useState } from "react"
+import Button from "../../../shared/Button"
+import CloseOrderModal from "./CloseOrderModal"
 
 
-    return(
-        <div>
-            orderID = {orderID}
-            <Button innerText={'Закрыть заказ'} clickEvent={closeOrder} value={{orderID:orderID, closeStatus: 1, userID: user.userID, shopID: shop.shopID }}/>
-        </div>
-    )
+function Order({order, setOrders }){
+    const [closeOrderModal, setCloseOrderModal] = useState(false)
 
+ return (
+    <>
+        {closeOrderModal && <CloseOrderModal 
+            setOrders={setOrders} 
+            setCloseOrderModal={setCloseOrderModal}
+            orderID={order.order_id}
+        />}
+        <p>Order = {order.order_id}</p>
+
+        <Button 
+            innerText={"Закрыть заказ"} 
+            clickEvent={setCloseOrderModal}
+            value={true} 
+        />
+    </>
+ )
 }
 
 export default Order
