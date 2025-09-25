@@ -60,22 +60,6 @@ class AuthService {
         }
     }
 
-    static async register( phone, firstName, lastName, pass ) {
-        const {path, body} = apiConfig.register( phone, firstName, lastName, pass )
-        try {
-            let response = await fetch(path, body) 
-            let result = await response.json()
-
-            if (!(response.status == 200 && !("detail" in result))) {
-                return false
-            }
-
-            return result 
-
-        } catch (error) {
-            console.error(error)
-        }
-    }
 
 }
 

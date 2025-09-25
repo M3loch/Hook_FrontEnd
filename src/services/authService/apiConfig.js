@@ -42,24 +42,6 @@ class apiConfig {
 
     }
 
-    static register( phone,  firstName, lastName, pass) {
-
-        return {
-            path: this._method + this._host + `users/create/`,
-
-            body: this._body(
-                { 
-                    phone_number: String(phone),
-                    first_name: String(firstName),
-                    family_name: String(lastName),
-                    password: String(pass)
-                }
-            ) 
-            
-        }
-
-    }
-
     static update( ){
 
     }

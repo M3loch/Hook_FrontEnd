@@ -1,5 +1,6 @@
 import AuthService from "../services/authService/authService"
 import ShopService from "../services/shopSevrice/shopService"
+import UserService from "../services/userService/userService"
 import { makeAutoObservable, toJS } from "mobx"
 
 class User{
@@ -81,6 +82,11 @@ class User{
         return await AuthService.isExist(phoneNumber)
     }
 
+    async confirmPass(pass){
+        const response = await AuthService.logIn(this.phoneNumber, pass)
+        return response.isExist
+    }
+
     async logIn(phoneNumber, pass) {
         const response = await AuthService.logIn(phoneNumber, pass)
         response.isExist && this._setUser(response.user) & this._setToken(response.user.access_token)
@@ -89,7 +95,7 @@ class User{
     }
 
     async register(phoneNumber, firstName, familyName, password){
-        const response = await AuthService.register(phoneNumber, firstName, familyName, password)
+        const response = await UserService.register(phoneNumber, firstName, familyName, password)
         response
             ? await this.logIn(phoneNumber, password)
             : null
@@ -97,6 +103,7 @@ class User{
     
     
     logOut() {
+        console.log('выход')
         this._setIsAuth(false)
         this._hasToken()
             ? this._clearToken()
@@ -125,6 +132,11 @@ class User{
             ? this.shops = newShopList
             : null
         return newShopList && true
+    }
+
+    async updateUser( updateRequest ) {
+        const newUserInfo = await UserService.updateUser( this.userID, this.accessToken, updateRequest )
+        newUserInfo && this._setUser(newUserInfo)
     }
 
 }

@@ -10,6 +10,8 @@ import UserPage from './pages/userPage/userPage.jsx'
 import Store from './store/Store.js'
 import Layout from './shared/Layout.jsx'
 import ShopPage from './pages/shopPage/ShopPage.jsx'
+import UserSettingPage from './pages/userSettingPage/UserSettingPage.jsx'
+import ShopSettingPage from './pages/shopSettingPage/ShopSettingPage.jsx'
 
 
 
@@ -39,6 +41,14 @@ function App() {
                   <UserPage />}
             />
 
+            <Route path='/settings' element={
+              !user.isAuth 
+                ? 
+                  <Navigate to="/logIn" /> 
+                : 
+                  <UserSettingPage />}
+            />
+
             <Route path='/logIn' element={
               !user.isAuth 
                 ? 
@@ -51,6 +61,13 @@ function App() {
               !shop.isChosen 
                 ? <Navigate to="/me" /> 
                 : <ShopPage />
+              }
+            />
+
+            <Route path='/shopSettings' element={
+              !shop.isChosen 
+                ? <Navigate to="/me" /> 
+                : <ShopSettingPage />
               }
             />
 

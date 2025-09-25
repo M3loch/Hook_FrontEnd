@@ -63,9 +63,7 @@ function RegForm ( { phoneNumber, setPhoneNumber } ) {
                 sideEffect={() => setIsEqual(password.localeCompare(passChecker))}
             />
             {
-                !isEqual
-                    ? <p>Пароль не совпадает</p>
-                    : null
+                !isEqual && <p>Пароль не совпадает</p>
             }
             <AcceptButton 
                 clickEvent={Registrator} 
