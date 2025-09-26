@@ -73,6 +73,7 @@ function RegForm ( { phoneNumber, setPhoneNumber } ) {
                     familyName,
                     password
                 }} 
+                innerText={"V"}
                 preEffect={async () => setIsTaken(await user.isExist(phoneNumber))}
             />
         </>

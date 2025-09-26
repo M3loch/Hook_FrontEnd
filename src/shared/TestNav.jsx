@@ -23,10 +23,14 @@ function TestNav(){
                     ? 
                         <>
                             <Link style={{marginLeft: '10px'}} to="/shop">Shop</Link>
-                            <Link style={{marginLeft: '10px'}} to="/shopSettings">Shop Settings</Link>
                         </>
                     : 
-                        null
+                    null
+                }
+            {
+                shop.isChosen && shop.pages["shop_settings"]
+                    ?<Link style={{marginLeft: '10px'}} to="/shopSettings">Shop Settings</Link>
+                    : null
             }
         </div>
     )

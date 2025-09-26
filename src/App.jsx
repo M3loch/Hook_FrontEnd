@@ -65,9 +65,9 @@ function App() {
             />
 
             <Route path='/shopSettings' element={
-              !shop.isChosen 
-                ? <Navigate to="/me" /> 
-                : <ShopSettingPage />
+              shop.isChosen && shop.pages["shop_settings"]
+                ? <ShopSettingPage />
+                : <Navigate to="/me" /> 
               }
             />
 

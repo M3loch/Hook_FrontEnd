@@ -1,6 +1,6 @@
 import { useContext, useState } from "react"
 import { Context } from "../../../App"
-import Field from "../shared/Field"
+import Field from "../../../shared/Field"
 
 
 function UserInfo(){

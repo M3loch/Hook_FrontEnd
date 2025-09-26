@@ -1,6 +1,6 @@
 import { useState } from "react"
-import Input from "../../../shared/Input"
-import Button from "../../../shared/Button"
+import Input from "./Input"
+import Button from "./Button"
 
 
 function Field({value, setValue, callBack, placeholder, innerText}) {

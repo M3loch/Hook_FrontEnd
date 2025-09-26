@@ -39,11 +39,22 @@ class apiConfig {
         } 
     }
 
-    static updateShop(){
+    static updateShop(accessToken, userID, shopID, updateRequest){
+        for (let key in updateRequest){
+            if (["shop_id"].includes(key)){
+                delete updateRequest[key]
+            } else {
+                if (!updateRequest[key]) {
+                    delete updateRequest[key]
+                } 
+            }
+        } 
 
+        return {
+            path: this._method + this._host + `shops/update/?access_token=${accessToken}&user_id=${userID}&shop_id=${shopID}`,
+            body : this._body(updateRequest, "PUT")
+        }
     }
-
-
 }
 
 export default apiConfig

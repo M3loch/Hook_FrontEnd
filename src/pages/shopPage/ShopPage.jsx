@@ -15,7 +15,7 @@ function ShopPage(){
         <>
             <div>
                 ==ShopHeader==
-                <p>Shop Name = {shop.shopName}</p>
+                <p>Shop Name = {shop.shopName.data}</p>
                 <p>Shop ID = {shop.shopID}</p>
             </div>
 
