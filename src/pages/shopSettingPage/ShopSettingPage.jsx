@@ -2,6 +2,7 @@ import { useContext, useState } from "react"
 import { Context } from "../../App"
 import Field from "../../shared/Field"
 import Block from "./widgets/Block"
+import Roles from "./widgets/Roles"
 
 function ShopSettingPage(){
     const {shop} = useContext(Context)
@@ -53,6 +54,13 @@ function ShopSettingPage(){
                         category={"Категории"}
                     />
                 : null
+            }
+            {
+            shop.roles && shop.roles.editable
+                ? 
+                    <Roles Roles={shop.roles.data}/>
+                : 
+                    null
             }
         </>
     )

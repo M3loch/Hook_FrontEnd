@@ -29,21 +29,21 @@ function CreateOrderModal ({setOrders, setCreateOrderModal}){
         <>
             <Select 
                 selectorName={'Стол'} 
-                options={shop.tables} 
+                options={shop.tables.data} 
                 setOption={setTableID} 
                 byIndex={true}
             />
 
             <Select 
                 selectorName={'Акция'} 
-                options={shop.discounts} 
+                options={shop.discounts.data} 
                 setOption={setDiscountID} 
                 byIndex={true}
             />
 
             <Select 
                 selectorName={'Катергори'} 
-                options={shop.categories} 
+                options={shop.categories.data} 
                 setOption={setCategoryID} 
                 byIndex={true}
             />

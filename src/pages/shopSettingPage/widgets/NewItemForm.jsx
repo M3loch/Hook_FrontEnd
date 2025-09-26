@@ -23,7 +23,7 @@ function NewItemForm({setNewItemModal, settingName, setTargetList}){
 
     return (
         <>
-            Введите название стола: 
+            Введите название: 
             <Input 
                 placeholder={"Название"}
                 onChange={setNewItemName}
@@ -34,6 +34,11 @@ function NewItemForm({setNewItemModal, settingName, setTargetList}){
                 innerText={"V"}
                 clickEvent={updateItems}
                 value={newItemName}
+            />
+            <Button 
+                innerText={"Отмена"}
+                clickEvent={setNewItemModal}
+                value={false}
             />
         </>
     )
