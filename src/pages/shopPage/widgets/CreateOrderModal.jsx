@@ -7,7 +7,7 @@ import Button from "../../../shared/Button"
 
 function CreateOrderModal ({setOrders, setCreateOrderModal}){
 
-    const { shop } = useContext(Context)
+    const { shop, orders } = useContext(Context)
 
     const [tableID, setTableID] = useState(null)
     const [discountID, setDiscountID] = useState(null)
@@ -21,7 +21,7 @@ function CreateOrderModal ({setOrders, setCreateOrderModal}){
 
     async function createOrder(){
         const newOrders = await shop.createOrder({tableID, discountID, categoryID, strength, flavoures, isPaid, comment})
-        setOrders(newOrders)
+        orders.updateList(newOrders, shop)
         setCreateOrderModal(false)
     }
 

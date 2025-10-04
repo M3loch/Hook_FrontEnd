@@ -18,11 +18,12 @@ import ShopSettingPage from './pages/shopSettingPage/ShopSettingPage.jsx'
 export const Context = createContext() 
 const user = Store.User
 const shop = Store.Shop
+const orders = Store.Orders
 
 function App() {
   return(
 
-      <Context.Provider value={{user, shop}} >
+      <Context.Provider value={{user, shop, orders}} >
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={

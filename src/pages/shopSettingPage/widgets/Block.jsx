@@ -10,8 +10,12 @@ function Block({list, itemName, settingName, category}) {
     const [targetList, setTargetList] = useState(list)
 
     async function deleteItem(item){
-        const newList = shop[`${settingName}`].data
-        newList.pop(item)
+        const currentList = shop[`${settingName}`].data
+        const newList = []
+        for (let i of currentList){
+            i != item && newList.push(i)
+        }
+
         const updateRequest = {}
         updateRequest[`${settingName}`] = newList
 

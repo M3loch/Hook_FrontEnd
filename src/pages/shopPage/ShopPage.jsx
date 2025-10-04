@@ -9,23 +9,20 @@ function ShopPage(){
     const {shop} = useContext(Context)
 
     const [createOrderModal, setCreateOrderModal] = useState(false)
-    const [orders, setOrders] = useState([])
 
     return (
         <>
             <div>
-                ==ShopHeader==
+                -==ShopHeader==-
                 <p>Shop Name = {shop.shopName.data}</p>
                 <p>Shop ID = {shop.shopID}</p>
             </div>
 
-            {createOrderModal && <CreateOrderModal setOrders={setOrders} 
+            {createOrderModal && <CreateOrderModal
                 setCreateOrderModal={setCreateOrderModal}/>}
 
             <OrderGrid
                 setCreateOrderModal={setCreateOrderModal}
-                orders={orders}
-                setOrders={setOrders}
             />
         </>
 

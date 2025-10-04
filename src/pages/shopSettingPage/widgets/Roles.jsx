@@ -19,7 +19,14 @@ function Roles({Roles}){
             roleList={roleList} setRoleList={setRoleList} 
             setRoleBuilderModal={setRoleBuilderModal}
             />}
-            {roleList.map((role) => {return <RoleCard key={crypto.randomUUID()} Role={role}/>})}
+            {roleList.map((role) => {return (
+                <RoleCard 
+                    key={role.role_name} 
+                    Role={role}
+                    setRoleList={setRoleList}
+                />
+
+            )})}
 
             <Button 
                 innerText={"Создать Роль"}

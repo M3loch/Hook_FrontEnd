@@ -96,7 +96,6 @@ function RoleBuilderModal({setRoleList, setRoleBuilderModal}){
                             clickEvent={()=>{
                                 newRole.orderPageVisibility = ordersPage
                                 newRole.settingPageVisibility = settingPage
-                                console.log(newRole)
                                 nextStep()
                             }}
                         />
@@ -173,7 +172,6 @@ function RoleBuilderModal({setRoleList, setRoleBuilderModal}){
                                 newRole.setSetting("tables", tablesVis, tablesEdit)
                                 newRole.setSetting("categories", categoryVis, categoryEdit)
                                 newRole.setSetting("employees", employyesVis, employyesEdit)
-                                console.log(newRole)
                                 nextStep()
 
                             }}
@@ -195,7 +193,6 @@ function RoleBuilderModal({setRoleList, setRoleBuilderModal}){
                             innerText={"Сохранить"}
                             clickEvent={() => {
                                 newRole.setOrderBypass(visBypass,  editBypass)
-                                console.log(newRole)
                                 CreateNewRole()
                             }}
                         />

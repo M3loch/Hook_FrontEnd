@@ -64,7 +64,7 @@ class Shop{
             categoryID: categoryID,
             strength: strength,
             flavoures: flavoures,
-            is_paid: isPaid,
+            isPaid: isPaid,
             comment: comment
             
         })
@@ -82,6 +82,7 @@ class Shop{
     get discounts(){return this._discounts}
     get tables(){return this._tables}
     get pages(){return this._pages}
+    get stages(){return this._stages}
     get roles(){return this._roles}
 }
 export default Shop
