@@ -2,7 +2,6 @@ import apiConfig from "./apiConfig"
 
 class OrderService {
 
-
     static async getOrders( shopID, userID ) {
 
         try {
@@ -48,17 +47,23 @@ class OrderService {
     }
 
     static async closeOrder(orderID, closeStatus, userID, shopID){
-        const requestBody = {
-            order_id: orderID,
-            shop_id: shopID,
-            user_id: userID,
-            close_status: closeStatus,
-            close_time: Date.now()
-          }
-        const {path, body} = apiConfig.closeOrder(requestBody)
+    const requestBody = {
+        order_id: orderID,
+        shop_id: shopID,
+        user_id: userID,
+        close_status: closeStatus,
+        close_time: Date.now()
+        }
+    const {path, body} = apiConfig.closeOrder(requestBody)
 
     const response = await fetch(path, body)
     return response.status == 200 && await response.json()
+    }
+
+    static async updateOrder( userID, orderID, shopID, updateRequest ){
+        const {path, body} = apiConfig.updateOrder(userID, orderID, shopID, updateRequest)
+        const response = await fetch(path, body)
+        return response.status == 200 && await response.json()
     }
 }
 

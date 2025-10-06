@@ -1,15 +1,24 @@
 import { useState } from "react"
-import Input from "./Input"
 import Button from "./Button"
+import Select from "./Select"
 
 
-function Field({value, setValue, callBack, placeholder, innerText}) {
+function SelectField({
+    value, 
+    setValue, 
+    callBack, 
+    placeholder, 
+    innerText, 
+    byIndex = false,  
+    options
+    }){
     
     const [editMode, setEditMode] = useState(false)
 
     function wrapper(){
         callBack()
         setEditMode(false)
+        byIndex && setValue(options[value])
     }
 
 
@@ -19,10 +28,11 @@ function Field({value, setValue, callBack, placeholder, innerText}) {
                 editMode
                     ?
                         <>
-                            <Input 
-                                placeholder={placeholder}
-                                value={value}
-                                onChange={setValue}
+                            <Select
+                                selectorName={placeholder}
+                                options={options}
+                                setOption={setValue}
+                                byIndex={byIndex}
                             />
                             <Button 
                                 innerText={innerText}
@@ -42,4 +52,4 @@ function Field({value, setValue, callBack, placeholder, innerText}) {
     )
 }
 
-export default Field
+export default SelectField

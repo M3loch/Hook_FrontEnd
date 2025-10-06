@@ -54,7 +54,7 @@ function ChangePassModal({setChangePassModal}) {
                             type={"password"} 
                             onChange={setConfirmNewPass} 
                             value={confirmNewPass} 
-                            sideEffect={() => setPassConfirmed(newPass.localeCompare(confirmNewPass))}
+                            sideEffect={(value) => setPassConfirmed(newPass === value)}
                         />
 
                         {

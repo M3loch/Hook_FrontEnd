@@ -1,6 +1,7 @@
 import { useContext } from "react"
 import { Context } from "../../../App"
 import AcceptButton from "../shared/AcceptButton"
+import Button from "../../../shared/Button"
 import Input from "../../../shared/Input"
 
 function LogInForm({ setIsExist, pass, setPass, phoneNumber, setPhoneNumber}) {
@@ -14,7 +15,7 @@ function LogInForm({ setIsExist, pass, setPass, phoneNumber, setPhoneNumber}) {
 
 
     return (
-        <>
+        <div className="modal">
             < Input 
                 placeholder={'Номер телефона'} 
                 onChange={setPhoneNumber} 
@@ -27,12 +28,12 @@ function LogInForm({ setIsExist, pass, setPass, phoneNumber, setPhoneNumber}) {
                 vaule={pass}
                 type="Password"
             />
-            < AcceptButton 
+            <Button 
                 clickEvent={logIn} 
                 value={[phoneNumber, pass]}
-                innerText='V'
+                innerText='Войти'
             />
-        </>
+        </div>
     )
 }
 

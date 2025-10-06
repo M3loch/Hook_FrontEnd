@@ -1,6 +1,7 @@
 function CheckBox({
     onChange, 
     value, 
+    label
     }) {
     
     function changeEvent() {
@@ -8,12 +9,17 @@ function CheckBox({
     }
 
     return (
-        <input 
-            type='checkbox' 
-            checked={value}
-            value={value} 
-            onChange={changeEvent} 
-        />
+        <div className="checkbox-container">
+            <div className="label-container">
+            {label}
+            </div>
+            <input 
+                type='checkbox' 
+                checked={value}
+                value={value} 
+                onChange={changeEvent} 
+            />
+        </div>
     )
 }
 

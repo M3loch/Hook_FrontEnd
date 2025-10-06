@@ -4,6 +4,8 @@ import ShopCard from "./widgets/ShopCard"
 import Button from "../../shared/Button"
 import NewShopModal from "./widgets/NewShopModal"
 
+import './styles/userPage.css'
+
 function UserPage() {
     const { user, shop } = useContext(Context)
 
@@ -15,16 +17,20 @@ function UserPage() {
     return (
         !newShopModal
             ?
-                <>
-                    <p> hello {user.firstName} </p>
-                    <p> ID {user.userID} </p>
-                    <p> token {user.accessToken} </p>
-                    <p> here's your shops: </p>
-                        
-                    {shops.map((shop) => {return <ShopCard key={shop.shop_id} shopName={shop.shop_name} shopID={shop.shop_id}/> })}
+                <div className="shop-list-widget-container">
+                    <div className="shop-list-container">
 
-                    <Button innerText={'Создать новое заведение'} clickEvent={setNewShopModal} value={true} />
-                </>
+                        <div className="shop-list">
+                            {shops.map((shop) => {return <ShopCard key={shop.shop_id} shopName={shop.shop_name} shopID={shop.shop_id}/> })}
+
+                        </div>
+                        <Button 
+                            innerText={'Создать новое заведение'} 
+                            clickEvent={setNewShopModal} 
+                            value={true} 
+                        />
+                    </div>
+                </div> 
             : <NewShopModal setNewShopModal={setNewShopModal}/>
 
     )

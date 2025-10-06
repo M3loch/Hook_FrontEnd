@@ -33,6 +33,13 @@ class apiConfig {
             body: this._body(body, "PUT")
         })
     }
+
+    static updateOrder(userID, orderID, shopID, body){
+        return ({
+            path: this._method + this._host + `orders/update/?user_id=${userID}&order_id=${orderID}&shop_id=${shopID}`,
+            body: this._body(body, "PUT")
+        })
+    }
 }
 
 export default apiConfig

@@ -1,10 +1,12 @@
 
 import { Converter } from "../lib/converter"
+import OrderService from "../services/orderService/orderService";
 
 class OrderEntity {
 
     constructor(
         {
+        shop_id,
         order_id,
         start_time,
         time_overs = [],
@@ -16,27 +18,32 @@ class OrderEntity {
         stage_index,
         comment
         },
-        {stages}
+        {stages, categories, discounts, tables}
     ){
         this._orderID = order_id;
         this._startTime = start_time;
         this._timeOvers = time_overs
         this._timeOversSum = time_overs.reduce((sum, current) => { return sum + current }, 0)
-        this._table_id = table_id
-        this._discount_id = discount_id
-        this._category_id = category_id
-        this._is_paid = is_paid
+        this._tableID = table_id
+        this._discountID = discount_id
+        this._categoryID = category_id
+        this._isPaid = is_paid
         this._strength = strength
-        this._stage_index = stage_index
+        this._stageIndex = stage_index
         this._comment = comment
         this._stages = stages.data
         this.stagesSum = 0
-        for (let i = 0; i <= this._stage_index; i++) {
+        for (let i = 0; i <= this._stageIndex; i++) {
             this.stagesSum += this._stages[i].duration*60000
         }
         this._timeInterface = Converter.remainingTime(
             this._startTime + this.stagesSum + this._timeOversSum -  Date.now()
         )
+        this._categories = categories.data
+        this._discounts = discounts.data
+        this._tables = tables.data
+
+        this._shopID = shop_id
     }
 
     
@@ -44,20 +51,64 @@ class OrderEntity {
     makeStep(){
         
         let stagesSum = 0
-        for (let i = 0; i <= this._stage_index; i++) {
+        for (let i = 0; i <= this._stageIndex; i++) {
             stagesSum += this._stages[i].duration
         }
         this._timeInterface = Converter.remainingTime(
             this._startTime + this.stagesSum + this._timeOversSum -  Date.now()
         )
-        return this
     }
+    
+    isLastStage(){
+        const nextStage = this._stageIndex + 1
+        return nextStage >= this._stages.length
+    }
+    
+    isNextIsLastStage(){
+        const nextStage = this._stageIndex + 2
+        return nextStage >= this._stages.length
+    }
+
+    async nextStage(userID){
+        const nextStage = this._stageIndex + 1
+        return nextStage < this._stages.length
+        ? await OrderService.updateOrder(userID, this._orderID, this._shopID, {stage_index : nextStage})
+        : null
+    }
+
+    async updateOrder(userID, updateBody){
+        return await OrderService.updateOrder(userID, this._orderID, this._shopID, updateBody)
+    }
+
+    
 
     get orderID(){
         return this._orderID
     }
     get timeInterface(){
         return this._timeInterface
+    }
+    get stage(){
+        return this._stages[this._stageIndex].stage_name
+    }
+    get category() {
+        return this._categories[this._categoryID]
+    }
+    get discount() {
+        return this._discounts[this._discountID]
+    }
+    get table() {
+        return this._tables[this._tableID]
+    }
+    get isPaid() {
+        return this._isPaid
+    }
+    get comment() {
+        return this._comment
+    }
+    
+    get strength() {
+        return this._strength
     }
 }
 

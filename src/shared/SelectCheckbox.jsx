@@ -1,9 +1,14 @@
 import { useState } from "react"
-import Input from "./Input"
 import Button from "./Button"
+import CheckBox from "./CheckBox"
 
 
-function Field({value, setValue, callBack, placeholder, innerText}) {
+function SelectCheckbox({
+    value, 
+    setValue, 
+    callBack, 
+    innerText, 
+    }){
     
     const [editMode, setEditMode] = useState(false)
 
@@ -19,10 +24,9 @@ function Field({value, setValue, callBack, placeholder, innerText}) {
                 editMode
                     ?
                         <>
-                            <Input 
-                                placeholder={placeholder}
-                                value={value}
+                            <CheckBox
                                 onChange={setValue}
+                                value={value}
                             />
                             <Button 
                                 innerText={innerText}
@@ -35,11 +39,11 @@ function Field({value, setValue, callBack, placeholder, innerText}) {
                         </>
                     :
                         <div onClick={()=> setEditMode(true)}>
-                            <p>{value}</p>
+                            <p>{String(value)}</p>
                         </div>
             }
         </>
     )
 }
 
-export default Field
+export default SelectCheckbox

@@ -1,7 +1,7 @@
 import { useContext, useState} from "react"
 import { Context } from "../../App"
 import OrderGrid from "./widgets/OrderGrid"
-import CreateOrderModal from "./widgets/CreateOrderModal"
+import CreateOrderModal from "./widgets/orderModals/CreateOrderModal"
 
 
 function ShopPage(){
@@ -12,11 +12,6 @@ function ShopPage(){
 
     return (
         <>
-            <div>
-                -==ShopHeader==-
-                <p>Shop Name = {shop.shopName.data}</p>
-                <p>Shop ID = {shop.shopID}</p>
-            </div>
 
             {createOrderModal && <CreateOrderModal
                 setCreateOrderModal={setCreateOrderModal}/>}

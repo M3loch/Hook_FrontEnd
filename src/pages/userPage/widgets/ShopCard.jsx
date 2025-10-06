@@ -1,8 +1,8 @@
 import { useContext } from "react"
 import { Context } from "../../../App"
-import { Link, useNavigate } from "react-router"
+import { useNavigate } from "react-router"
 
-
+import '../styles/shopCard.css'
 
 
 function ShopCard({shopName, shopID}){
@@ -17,16 +17,11 @@ function ShopCard({shopName, shopID}){
     
     return(
         <div 
-            style={
-                {
-                    background: "lightBlue",
-                    cursor: 'pointer'
-                }
-            }
+            className="shop-card"
             onClick={getShopPage}
         >
-            <p>{shopName}</p>
-            <p>{shopID}</p>
+            <p className="shop-name">{shopName}</p>
+            <p className="shop-id">{shopID}</p>
         </div>
     )
 }

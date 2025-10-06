@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+:root {
+    --main : #B51D4D;
+    --main-hover : #d46288;
+    --main-active : #D4819C;
+    --bg: #191919;
+    --bg-transparent: #191919d3;
+    --a: white;
+    --a-hover: #acacac;
+    --a-active: grey;
+    --text-light: #ffffff;
+    --text-dark: #828282;
+}
+*{
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+body {
+    background: var(--bg); 
+    font-family: 'Mulish', 'Roboto',Courier, monospace;   
+    color:var(--text-light);
+    overflow: hidden;
+}

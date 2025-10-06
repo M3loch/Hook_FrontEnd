@@ -1,9 +1,10 @@
 import { useContext, useEffect, useState } from "react"
 import { Context } from "../../../App"
-import OpenCreateModalButton from "./OpenCreateModalButton"
+import Button from "../../../shared/Button"
 import Order from "./Order"
-import OrderEntity from "../../../entities/order"
 
+import '../styles/orderGrid.css'
+import '../styles/newOrderButton.css'
 
 function OrderGrid({
     setCreateOrderModal,
@@ -23,7 +24,7 @@ function OrderGrid({
     }, [])
     
     return(
-        <>
+        <div className="order-grid">
             {ordersState.map((order) => 
                 {
                     return (
@@ -34,10 +35,13 @@ function OrderGrid({
                     )
                 } 
             )}
-            <OpenCreateModalButton 
-                setCreateOrderModal={setCreateOrderModal} 
+            <Button 
+                clickEvent={setCreateOrderModal} 
+                value={true}
+                innerText={'Создать Заказ'}
+                className={'new-order-button'}
             />
-        </>
+        </div>
     ) 
 }
 

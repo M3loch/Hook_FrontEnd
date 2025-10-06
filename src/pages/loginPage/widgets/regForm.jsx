@@ -24,7 +24,7 @@ function RegForm ( { phoneNumber, setPhoneNumber } ) {
     }       
 
     return (
-        <>
+        <div className="modal">
             <Input 
                 placeholder={'номер телефона'} 
                 type={'text'} 
@@ -60,7 +60,9 @@ function RegForm ( { phoneNumber, setPhoneNumber } ) {
                 type={"password"} 
                 value={passChecker} 
                 onChange={setPassChecker}
-                sideEffect={() => setIsEqual(password.localeCompare(passChecker))}
+                sideEffect={(value) => {
+                    setIsEqual(value === password)
+                }}
             />
             {
                 !isEqual && <p>Пароль не совпадает</p>
@@ -73,10 +75,12 @@ function RegForm ( { phoneNumber, setPhoneNumber } ) {
                     familyName,
                     password
                 }} 
-                innerText={"V"}
+                innerText={"Зарегестрировасться"}
                 preEffect={async () => setIsTaken(await user.isExist(phoneNumber))}
+                
+                buttonClassName='hollow-button'
             />
-        </>
+        </div>
     )
 }
 

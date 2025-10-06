@@ -1,21 +1,21 @@
 import { useContext } from "react"
-import Button from "../../../shared/Button"
-import { Context } from "../../../App"
+import Button from "../../../../shared/Button"
+import { Context } from "../../../../App"
 
 
-function CloseOrderModal({setOrders, setCloseOrderModal, orderID}) {
+function CloseOrderModal({setCloseOrderModal, order}) {
 
-    const {shop} = useContext(Context)
+    const {shop, orders} = useContext(Context)
 
 
     async function closeOrder(closeStatus){
-        const newOrders = await shop.closeOrder(orderID, closeStatus)
-        setOrders(newOrders)
-        setCloseOrderModal(false)
+        const newOrders = await shop.closeOrder(order.orderID, closeStatus)
+        orders.updateList(newOrders)
     }
 
     return (
         <>
+        <p>Закрыть заказ?</p>
             <Button 
                 innerText={"Перезабив"}
                 clickEvent={closeOrder}

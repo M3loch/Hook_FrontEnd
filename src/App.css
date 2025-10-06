@@ -1,0 +1,136 @@
+
+
+a{
+    color: var(--a);
+    text-decoration: none;
+}
+a:hover{
+    color: var(--a-hover);
+}
+a:active{
+    color: var(--a-active);
+}
+
+button {
+    padding: 20px;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    background: var(--main);
+    color: var(--text-light);
+    cursor: pointer;
+    width: 100%;
+    margin: 5px;
+    transition: 200ms;
+}
+
+button:hover{
+    background: var(--main-hover);
+}
+button:active{
+    background: var(--main-active);
+}
+
+input{
+    padding: 20px 150px 20px 25px;
+    border-radius: 15px;
+    border: none;
+    font-weight: lighter;
+    width: 50%;
+    margin: 5px;
+}
+input::placeholder{
+    color: var(--text-dark);
+}
+
+select{
+    border-radius: 15px;
+    padding: 20px 150px 20px 25px;
+    width: 100%;
+    margin: 5px;
+}
+option{
+    border-radius: 15px;
+    padding: 20px 150px 20px 25px;
+}
+option:disabled{
+    color: var(--text-dark);
+}
+
+.checkbox-container{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.label-container{
+    margin: 5px;
+    font-weight: bold;
+    padding: 0;
+}
+
+input[type="checkbox"]{
+    cursor: pointer;
+    width: 10px;
+    height: 10px;
+    margin: 5px;
+    padding: 10px;
+    appearance: none;
+    background: var(--bg);
+    box-shadow: inset 0 0 5px rgb(0 0 0 / 0.2);
+    border-radius: 5px;
+    border: 1px solid #FFFFFF;
+    transition: 200ms;
+}
+
+input[type="checkbox"]:checked{
+    background-color: var(--main);
+    overflow: hidden;
+}
+
+input[type="checkbox"]:hover{
+    background-color: var(--main-active);
+    overflow: hidden;
+}
+
+.modal-bg {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    background: var(--bg-transparent);
+}
+
+.modal{
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    flex-direction: column;
+    border: solid var(--text-light) 3px;
+    border-radius: 10px;
+    padding: 40px;
+    background: var(--bg);
+}
+
+.hollow-button{
+    padding: 20px;
+    font-weight: bold;
+    border: solid var(--main) 3px;
+    border-radius: 10px;
+    background: var(--bg);
+    color: var(--text-light);
+    cursor: pointer;
+    width: 100%;
+    margin: 5px;
+    transition: 200ms;
+}
+
+.hollow-button:hover{
+    background: var(--main);
+}
+
+.hollow-button:active{
+    background: var(--main-active);
+}

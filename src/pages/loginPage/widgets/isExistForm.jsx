@@ -1,6 +1,6 @@
 import AcceptButton from "../shared/AcceptButton"
 import Input from "../../../shared/Input"
-import ActionButton from "../shared/ActionButton"
+import Button from "../../../shared/Button"
 import { Context } from "../../../App"
 import { useContext } from "react"
 
@@ -21,24 +21,30 @@ function IsExistForm( { isExist, setIsExist, setPhoneNumber, phoneNumber, setIsR
     }
 
     return (
-        <>
+        <div className="modal">
             < Input 
                 placeholder={'Номер телефона'} 
                 onChange={setPhoneNumber} 
                 value={phoneNumber}
                 type={"text"}
             />
-            < AcceptButton 
+            <Button 
                 clickEvent={checkIsExist} 
                 value={phoneNumber}
-                innerText='V'
+                innerText='Войти'
             />
             { 
             isExist == false
-                ? <ActionButton innerText='Регистрация' clickEvent={setIsRegistred} value={false}  />
+                ? 
+                    <Button 
+                        innerText='Регистрация' 
+                        clickEvent={setIsRegistred} 
+                        value={false}  
+                        className='hollow-button'
+                    />
                 : null
             }
-        </>
+        </div>
     )
 }
 export default IsExistForm

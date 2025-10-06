@@ -4,15 +4,19 @@ function Input({
     value, 
     type = 'text',
     sideEffect = null, 
-    max = null, 
+    max = null,
+    min = null 
     }) {
 
     function maxCallback(){
-        alert(`Максимальное значение - ${max}`)
         onChange(max)
+    }
+    function minCallback(){
+        onChange(min)
     }
 
     function changeEvent(event) {
+        sideEffect && sideEffect(event.target.value)
         onChange(event.target.value)
 
         max !== null
@@ -20,8 +24,13 @@ function Input({
                 (type == 'number' && event.target.value > max) && maxCallback
                 (type == 'text' && event.target.valu.length > max) && maxCallback
             : null
+
+        min !== null
+            ? 
+                (type == 'number' && event.target.value < min) && minCallback
+                (type == 'text' && event.target.valu.length < min) && minCallback
+            : null
             
-        sideEffect && sideEffect()
     }
 
     return (

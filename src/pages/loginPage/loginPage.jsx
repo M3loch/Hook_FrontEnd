@@ -15,8 +15,7 @@ function LoginPage ( ) {
             
         
     return(
-        <>
-            12345687901
+        <div className='modal-bg'>
             {
                 isRegistred
                     ? !isExist
@@ -43,7 +42,7 @@ function LoginPage ( ) {
                             setPhoneNumber={setPhoneNumber}/>
                             
             }
-        </>
+        </div>
 
 
 )
