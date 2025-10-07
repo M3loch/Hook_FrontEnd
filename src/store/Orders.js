@@ -30,6 +30,10 @@ class Orders{
         this._orderArray = resultArray
         this._setOrders([...resultArray])
     }
+
+    stop(){
+        clearInterval(this.time)
+    }
 }
 
 export default Orders

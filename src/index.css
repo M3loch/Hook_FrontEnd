@@ -10,6 +10,11 @@
     --a-active: grey;
     --text-light: #ffffff;
     --text-dark: #828282;
+    --table-header-grey: #828282;
+    --table-header-pink: #D4819C;
+    --table-corner: #E0E0E0;
+    --field-label: #F2F2F2;
+    --field-value: #FBFBFB;
 }
 *{
     -webkit-user-select: none;

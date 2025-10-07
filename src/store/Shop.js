@@ -25,6 +25,19 @@ class Shop{
         this._user = user
     }
 
+    exit(){
+        
+        this._shopID = undefined
+        this._shopName = undefined
+        this._categories = undefined
+        this._tables = undefined
+        this._stages = undefined
+        this._discounts = undefined
+        this._roles = undefined
+        this._isChosen = false
+        this._pages = undefined 
+    }
+
     _setShop({shop_id, shop_name, tables, stages, discounts, roles, categories, pages})
     {
         this._shopID = shop_id

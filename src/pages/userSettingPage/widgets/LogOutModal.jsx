@@ -5,20 +5,31 @@ import { Context } from "../../../App"
 
 function LogOutModal({setLogOutModal}){
 
-    const {user} = useContext(Context)
+    const {user, shop, orders} = useContext(Context)
 
     function Logout(){
         setLogOutModal(false)
         user.logOut()
+        shop.exit()
+        orders.stop()
     }
 
 return (
-    <>
-    Are You Sure?
-
-    <Button innerText={"Выйти"} clickEvent={Logout} />
-    <Button  innerText={"Отмена"} clickEvent={setLogOutModal} value={false}/>
-    </>
+    <div className="modal-bg">
+        <div className="modal">
+            Выйти?
+            <Button 
+                innerText={"Выйти"} 
+                clickEvent={Logout} 
+                className={'hollow-button'}
+            />
+            <Button  
+                innerText={"Отмена"} 
+                clickEvent={setLogOutModal} 
+                value={false}
+            />
+            </div>
+    </div>
 )
 }
 

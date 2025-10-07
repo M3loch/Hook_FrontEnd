@@ -1,11 +1,13 @@
-import TestNav from "./TestNav";
+import Nav from "./Nav";
 import { Outlet } from "react-router";
 
 function Layout(){
     return (
         <>
-            <TestNav />
-            <Outlet />
+            <Nav />
+            <main>
+                <Outlet />
+            </main>
         </>
     )
 }

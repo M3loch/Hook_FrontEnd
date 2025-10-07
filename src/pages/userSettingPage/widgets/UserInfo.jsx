@@ -2,6 +2,8 @@ import { useContext, useState } from "react"
 import { Context } from "../../../App"
 import Field from "../../../shared/Field"
 
+import '../styles/userInfo.css'
+
 
 function UserInfo(){
 
@@ -12,7 +14,10 @@ function UserInfo(){
     const [phoneNumber, setPhoneNumber] = useState(user.phoneNumber)
 
     return (
-        <>
+        <div className="user-setting-table">
+        <div className="table-header-grey"> Персональные данные</div>
+        <div className="setting-container">
+            <p>Имя:</p>
             <Field 
                 value={firstName}
                 setValue={setFirstName}
@@ -20,6 +25,9 @@ function UserInfo(){
                 innerText={"Сохранить"}
                 callBack={() => user.updateUser({first_name: firstName})}
             />
+        </div>
+        <div className="setting-container">
+            <p>Фамилия:</p>
             <Field 
                 value={familyName}
                 setValue={setFamilyName}
@@ -27,6 +35,9 @@ function UserInfo(){
                 innerText={"Сохранить"}
                 callBack={() => user.updateUser({family_name: familyName})}
             />
+        </div>
+        <div className="setting-container">
+            <p>Номер телефона:</p>
             <Field 
             value={phoneNumber}
             setValue={setPhoneNumber}
@@ -34,7 +45,8 @@ function UserInfo(){
             innerText={"Сохранить"}
             callBack={() => user.updateUser({phone_number: phoneNumber})}
         />
-        </>
+        </div>
+        </div>
     )
 }
 

@@ -1,0 +1,56 @@
+.nav {
+    position: absolute;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    width: 100%;
+    top:0%;
+    left: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    z-index: 99999;
+
+}
+
+.profile {
+    width: 30px;
+    padding: 5px;
+}
+
+.logo {
+    margin-left: 3px;
+    margin-top: 2px;
+    width: 30px;
+    height: 28px;
+    padding: 5px;
+}
+
+.shop{
+    width: 30px;
+    padding: 5px;
+}
+
+.shop-settings{
+    margin-bottom: -5px;
+    width: 30px;
+    padding: 5px;
+    padding-top: 7px;
+}
+
+
+a {
+    position: relative;
+    left: 30px;
+    padding: 5px;
+    margin-right: 60px;
+    border-radius: 50%;
+    border: solid;
+    border-color: var(--text-light);
+    background: var(--bg);
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.349);
+}
+
+.active{
+    border: solid;
+    border-color: var(--main);
+}

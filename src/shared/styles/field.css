@@ -1,0 +1,24 @@
+.field{
+    width: 200px;
+    display: flex;
+    margin: 0;
+    background: var(--field-value);
+    color: var(--text-dark);
+    border-bottom: solid var(--text-dark) 1px;
+}
+
+.field > input{
+    width: 500px;
+    margin-right: 50px;
+    padding-left: 25px;
+
+}
+
+.value-container {
+    width: 400px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+    font-weight: 600;
+}

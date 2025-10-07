@@ -1,0 +1,7 @@
+.controls{
+    display: flex;
+    flex-direction: row;
+    width: 460px;
+    margin-top: -40px;
+    margin-left: 55px;
+}

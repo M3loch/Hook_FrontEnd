@@ -13,8 +13,16 @@ function NewShopModal({setNewShopModal}){
             <div className="modal">
                 <Input placeholder="название заведения" type="text" onChange={setShopName} value={shopName}/>
                 <div className="button-box" >
-                    <Button innerText={'Отмена'} clickEvent={setNewShopModal} value={false}/>
-                    <NewShopButton shopName={shopName} setNewShopModal={setNewShopModal}/>
+                    <Button 
+                        innerText={'Отмена'} 
+                        clickEvent={setNewShopModal} 
+                        value={false}
+                        className={'hollow-button'}
+                    />
+                    <NewShopButton 
+                        shopName={shopName} 
+                        setNewShopModal={setNewShopModal}
+                    />
                 </div>
             </div>
         </div>

@@ -26,7 +26,7 @@ function NextStageModal({setCloseOrderModal, setNextStageModal, order, setNextSt
             }
 
     return (
-        <>
+        <div className="pop-up">
 
             <p>Перевести заказ на следующую стадию?</p>
             <Button 
@@ -37,9 +37,10 @@ function NextStageModal({setCloseOrderModal, setNextStageModal, order, setNextSt
             <Button 
                 innerText={"Нет"}
                 clickEvent={setNextStageModal}
+                className={'hollow-button'}
                 value={false}
             />
-        </>
+        </div>
     )
 }
 

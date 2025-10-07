@@ -14,8 +14,8 @@ function CloseOrderModal({setCloseOrderModal, order}) {
     }
 
     return (
-        <>
-        <p>Закрыть заказ?</p>
+        <div className="pop-up">
+            <p>Закрыть заказ?</p>
             <Button 
                 innerText={"Перезабив"}
                 clickEvent={closeOrder}
@@ -27,7 +27,13 @@ function CloseOrderModal({setCloseOrderModal, order}) {
                 clickEvent={closeOrder}
                 value={1}
             />
-        </>
+            <Button 
+                innerText={"Отмена"}
+                clickEvent={setCloseOrderModal}
+                className={'hollow-button'}
+                value={false}
+            />
+        </div>
     )
 }
 
