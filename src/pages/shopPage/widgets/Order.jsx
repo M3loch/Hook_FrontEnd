@@ -5,12 +5,13 @@ import NextStageModal from "./orderModals/NextStageModal"
 import Field from "../../../shared/Field"
 import { Context } from "../../../App"
 import SelectField from "../../../shared/SelectField"
-import SelectCheckbox from "../../../shared/SelectCheckbox"
+import CheckboxField from "../../../shared/CheckboxField"
 
 import '../styles/order.css'
 
 import cross from '../../../assets/cross.svg'
 import arrow from '../../../assets/arrow.svg'
+import TimeOver from "./timeOver"
 
 
 function Order({order}){
@@ -32,7 +33,7 @@ function Order({order}){
     const [compressed, setCompressed] = useState(true)
 
  return (
-    <div className="order">
+    <div className={compressed ? "order is-comressed" : "order"}>
         <div className="modals">
             {   closeOrderModal && 
                 <CloseOrderModal 
@@ -87,7 +88,6 @@ function Order({order}){
                     <div className="order-info">
                         <div className="setting-container">
                             <p>Категория</p>
-                            <div className="category" >
                                 <SelectField
                                     value={category}
                                     setValue={setCategory}
@@ -97,11 +97,9 @@ function Order({order}){
                                     options={shop.categories.data}
                                     callBack={() => {order.updateOrder(user.userID, {category_id: category})}}
                                     />
-                            </div>
                         </div>
                         <div className="setting-container">
                             <p>Стол</p>
-                            <div className="table" >
                                 <SelectField
                                     value={table}
                                     setValue={setTable}
@@ -111,11 +109,9 @@ function Order({order}){
                                     options={shop.tables.data}
                                     callBack={() => {order.updateOrder(user.userID, {table_id: table})}}
                                     />
-                            </div>
                         </div>
                         <div className="setting-container">
-                            <p>Стол</p>
-                            <div className="discount" >
+                            <p>Акция</p>
                                 <SelectField
                                     value={discount}
                                     setValue={setDiscount}
@@ -125,22 +121,18 @@ function Order({order}){
                                     options={shop.discounts.data}
                                     callBack={() => {order.updateOrder(user.userID, {discount_id: discount})}}
                                     />
-                            </div>
                         </div>
                         <div className="setting-container">
                             <p>Оплачен</p>
-                            <div className="isPaid" >
-                                <SelectCheckbox
+                                <CheckboxField
                                     value={isPaid}
                                     setValue={setIsPaid}
                                     callBack={()=>{order.updateOrder(user.userID, {is_paid: isPaid})}}
                                     innerText={"Обновить"}
                                     />
-                            </div>
                         </div>
                         <div className="setting-container">
                             <p>Крепость</p>
-                            <div className="strength" >
                                 <Field 
                                     value={strength}
                                     setValue={setStrength}
@@ -150,7 +142,6 @@ function Order({order}){
                                     callBack={() => {order.updateOrder(user.userID, {strength: strength})}}
                                     innerText={'Обновить'}
                                     />
-                            </div>
                         </div>
                             <div className="comment" >
                                 <Field 
@@ -161,8 +152,19 @@ function Order({order}){
                                     innerText={'Обновить'}
                                     textArea={true}
                                 />
+                            </div>
+                            <div className="time-overs">
+                                {
+                                    order.timeOversInterface.map((element) => {
+                                        return <TimeOver 
+                                            value={element.data}
+                                            stage={element.stage}
+                                            isPositive={element.isPositive}
+                                            />
+                                    })
+                                }
+                            </div>
                         </div>
-                    </div>
 
         }
     </div>

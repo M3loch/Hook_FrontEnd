@@ -25,5 +25,5 @@ body {
     background: var(--bg); 
     font-family: 'Mulish', 'Roboto',Courier, monospace;   
     color:var(--text-light);
-    overflow: hidden;
+    /* overflow: hidden; */
 }

@@ -8,16 +8,10 @@
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.301);
 }
 
-.pop-up{
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: var(--bg);
-    border: solid var(--text-light) 3px;
-    padding: 0px 30px 20px 30px;
-    border-radius: 15px;
+.is-comressed{
+    height: 260px;
 }
+
 
 .order-header{
     display: flex;
@@ -105,8 +99,7 @@
 }
 
 .order-info{
-    position: absolute;
-    top: 345px;
+    position: relative;
     background: #16161616;
     display: flex;
     flex-direction: column;
@@ -114,5 +107,16 @@
     width: 260px;
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.301);
     padding:20px;
+    padding-top: 0;
+}
+
+.time-over {
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+}
+
+.negative{
+    color: red;
 }
 

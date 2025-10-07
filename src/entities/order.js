@@ -49,7 +49,6 @@ class OrderEntity {
     
 
     makeStep(){
-        
         let stagesSum = 0
         for (let i = 0; i <= this._stageIndex; i++) {
             stagesSum += this._stages[i].duration
@@ -71,8 +70,15 @@ class OrderEntity {
 
     async nextStage(userID){
         const nextStage = this._stageIndex + 1
+        this._timeOvers.push(
+            -1*(this._startTime + this.stagesSum + this._timeOversSum -  Date.now())
+        )
+        console.log(this.timeOvers)
         return nextStage < this._stages.length
-        ? await OrderService.updateOrder(userID, this._orderID, this._shopID, {stage_index : nextStage})
+        ? await OrderService.updateOrder(userID, this._orderID, this._shopID, {
+            stage_index : nextStage,
+            time_overs : this.timeOvers
+        })
         : null
     }
 
@@ -109,6 +115,34 @@ class OrderEntity {
     
     get strength() {
         return this._strength
+    }
+
+    get timeOvers(){
+        return this._timeOvers
+    }
+
+    get timeOversInterface(){
+        const formatedTimeOvers = []
+        this._timeOvers.forEach((value, index)=>{
+            value >= 0
+                ?
+                    formatedTimeOvers.push(
+                        {
+                            isPositive: value >= 0,
+                            data: Converter.remainingTime(-value),
+                            stage: this._stages[index].stage_name
+                        }
+                    )
+                :
+                    formatedTimeOvers.push(
+                        {
+                            isPositive: value >= 0,
+                            data: Converter.remainingTime(-value),
+                            stage: this._stages[index].stage_name
+                        }
+                    )
+        })
+        return formatedTimeOvers
     }
 }
 

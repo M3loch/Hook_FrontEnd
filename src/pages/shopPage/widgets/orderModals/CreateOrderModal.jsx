@@ -11,8 +11,8 @@ function CreateOrderModal ({setCreateOrderModal}){
     const { shop, orders } = useContext(Context)
 
     const [tableID, setTableID] = useState(0)
-    const [discountID, setDiscountID] = useState(0)
-    const [categoryID, setCategoryID] = useState(0)
+    const [discountID, setDiscountID] = useState(null)
+    const [categoryID, setCategoryID] = useState(null)
     const [strength, setStrength] = useState(0)
     const [flavoures, setFlavoures] = useState([])
     const [isPaid, setIsPaid] = useState(false)

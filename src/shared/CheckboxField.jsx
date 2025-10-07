@@ -3,7 +3,7 @@ import Button from "./Button"
 import CheckBox from "./CheckBox"
 
 
-function SelectCheckbox({
+function CheckboxField({
     value, 
     setValue, 
     callBack, 
@@ -19,7 +19,7 @@ function SelectCheckbox({
 
 
     return (
-        <>
+        <div className="field">
             {
                 editMode
                     ?
@@ -34,16 +34,19 @@ function SelectCheckbox({
                             />
                             <Button 
                                 innerText={"Отмена"}
+                                className={'hollow-button'}
                                 clickEvent={()=> setEditMode(false)}
                             />
                         </>
                     :
-                        <div onClick={()=> setEditMode(true)}>
-                            <p>{String(value)}</p>
+                        <div
+                            className="value-container"  
+                            onClick={()=> setEditMode(true)}>
+                            <p>{value ? 'Да' : 'Нет'}</p>
                         </div>
             }
-        </>
+        </div>
     )
 }
 
-export default SelectCheckbox
+export default CheckboxField

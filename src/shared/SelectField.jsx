@@ -23,32 +23,40 @@ function SelectField({
 
 
     return (
-        <>
+        <div className="field">
             {
                 editMode
                     ?
                         <>
-                            <Select
-                                selectorName={placeholder}
-                                options={options}
-                                setOption={setValue}
-                                byIndex={byIndex}
-                            />
-                            <Button 
-                                innerText={innerText}
-                                clickEvent={wrapper}
-                            />
-                            <Button 
-                                innerText={"Отмена"}
-                                clickEvent={()=> setEditMode(false)}
-                            />
+                            <div className="value-container" >
+                            
+                                <Select
+                                    selectorName={placeholder}
+                                    options={options}
+                                    setOption={setValue}
+                                    byIndex={byIndex}
+                                />
+                            </div>
+                            <>
+                                <Button 
+                                    innerText={innerText}
+                                    clickEvent={wrapper}
+                                    />
+                                <Button 
+                                    className={'hollow-button'}
+                                    innerText={"Отмена"}
+                                    clickEvent={()=> setEditMode(false)}
+                                    />
+                            </>
                         </>
                     :
-                        <div onClick={()=> setEditMode(true)}>
+                        <div 
+                            className="value-container" 
+                            onClick={()=> setEditMode(true)}>
                             <p>{value}</p>
                         </div>
             }
-        </>
+        </div>
     )
 }
 

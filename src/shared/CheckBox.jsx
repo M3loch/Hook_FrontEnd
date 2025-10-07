@@ -10,9 +10,12 @@ function CheckBox({
 
     return (
         <div className="checkbox-container">
-            <div className="label-container">
-            {label}
-            </div>
+            {
+                label && 
+                <div className="label-container">
+                    {label}
+                </div>
+            }
             <input 
                 type='checkbox' 
                 checked={value}
