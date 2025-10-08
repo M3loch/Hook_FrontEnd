@@ -22,8 +22,10 @@ function NewItemForm({setNewItemModal, settingName, setTargetList}){
     }
 
     return (
-        <>
-            Введите название: 
+        <div className="pop-up">
+            <p>
+                Введите название: 
+            </p>
             <Input 
                 placeholder={"Название"}
                 onChange={setNewItemName}
@@ -31,7 +33,7 @@ function NewItemForm({setNewItemModal, settingName, setTargetList}){
                 max={10}
             />
             <Button 
-                innerText={"V"}
+                innerText={"Добавить"}
                 clickEvent={updateItems}
                 value={newItemName}
             />
@@ -39,8 +41,9 @@ function NewItemForm({setNewItemModal, settingName, setTargetList}){
                 innerText={"Отмена"}
                 clickEvent={setNewItemModal}
                 value={false}
+                className={'hollow-button'}
             />
-        </>
+        </div>
     )
 }
 

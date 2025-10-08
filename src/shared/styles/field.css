@@ -1,18 +1,21 @@
 .field{
     width: 100%;
-    height: 66px;
+    height: calc(100%);
     display: flex;
     margin: 0;
+    box-sizing: border-box;
     background: var(--field-value);
     color: var(--text-dark);
-    border-bottom: solid var(--text-dark) 1px;
 }
 
 .field > input{
-    margin-right: 50px;
+
+    margin-right:13px;
     padding-left: 25px;
     padding-right: 20px;
-    min-width: -webkit-fill-available;
+    width: fit-content;
+    min-width: calc(100% - 60px);
+    font-size:medium;
 
 }
 

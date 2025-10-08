@@ -14,26 +14,34 @@ function Roles({Roles}){
     }
     const [roleList, setRoleList] = useState(roles)
     return(
-        <>
+        <div className="block">
             {roleBuilderModal && <RoleBuilderModal 
             roleList={roleList} setRoleList={setRoleList} 
             setRoleBuilderModal={setRoleBuilderModal}
             />}
-            {roleList.map((role) => {return (
-                <RoleCard 
-                    key={role.role_name} 
-                    Role={role}
-                    setRoleList={setRoleList}
+            <p className="block-setting-container">
+                Роли:
+            </p>
+            <div className="block-values">
+                {roleList.map((role) => {return (
+                    <RoleCard 
+                        key={role.role_name} 
+                        Role={role}
+                        setRoleList={setRoleList}
+                    />
+
+                )})}
+            </div>
+
+            <div className="block-controls">
+                <Button 
+                    innerText={"Создать Роль"}
+                    clickEvent={setRoleBuilderModal}
+                    value={true}
                 />
+            </div>
 
-            )})}
-
-            <Button 
-                innerText={"Создать Роль"}
-                clickEvent={setRoleBuilderModal}
-                value={true}
-            />
-        </>
+        </div>
     )
 }
 

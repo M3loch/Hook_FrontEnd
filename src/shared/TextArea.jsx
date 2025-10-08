@@ -42,7 +42,7 @@ function Textarea({
         // Сбрасываем высоту, чтобы получить реальную высоту контента
         textareaRef.current.style.height = 'auto';
         // Устанавливаем новую высоту, равную высоте содержимого
-        textareaRef.current.style.height = `${textareaRef.current.scrollHeight - 40}px`;
+        textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
       }
     }, [value]); // Пересчитываем при каждом изменении текста
 

@@ -5,32 +5,29 @@ function Input({
     type = 'text',
     sideEffect = null, 
     max = null,
-    min = null 
+    min = null
     }) {
 
-    function maxCallback(){
-        onChange(max)
-    }
-    function minCallback(){
-        onChange(min)
-    }
-
     function changeEvent(event) {
+        let value = event.target.value
         sideEffect && sideEffect(event.target.value)
-        onChange(event.target.value)
 
-        max !== null
-            ? 
-                (type == 'number' && event.target.value > max) && maxCallback
-                (type == 'text' && event.target.valu.length > max) && maxCallback
-            : null
+        if (max !== null && type == 'number' && value > max) {
+             onChange(max)
+             return
+        }
+        if (min !== null && type == 'number' && value < min) {
+            onChange(min)
+            return
+       }
+        
 
-        min !== null
-            ? 
-                (type == 'number' && event.target.value < min) && minCallback
-                (type == 'text' && event.target.valu.length < min) && minCallback
-            : null
-            
+        if (type == 'number' && typeof(Number(value.slice(-1))) !== 'number') {
+            return
+        }
+        type == 'number'
+            ? onChange(Number(value))
+            : onChange(value)
     }
 
     return (

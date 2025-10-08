@@ -2,10 +2,10 @@ import { useContext } from "react";
 import { NavLink } from "react-router";
 import { Context } from "../App";
 
-import profile from '../../public/assets/profile.svg'
-import logo from '../../public/assets/logo.svg'
-import shopImg from '../../public/assets/shop.svg'
-import shopSettings from '../../public/assets/shopSettings.svg'
+import profile from '../assets/profile.svg'
+import logo from '../assets/logo.svg'
+import shopImg from '../assets/shop.svg'
+import shopSettings from '../assets/shopSettings.svg'
 
 import './styles/nav.css'
 function Nav(){

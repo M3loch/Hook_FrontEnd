@@ -109,11 +109,22 @@
     padding:20px;
     padding-top: 0;
 }
+.time-overs{
+    margin-top: 10px;
+}
 
 .time-over {
+    box-sizing: border-box;
     display: flex;
+    height:40px;
+    margin: 0;
     flex-direction: row;
     justify-content:space-between;
+    align-items: center ;
+}
+
+.negative, .positive{
+    margin: 0;
 }
 
 .negative{

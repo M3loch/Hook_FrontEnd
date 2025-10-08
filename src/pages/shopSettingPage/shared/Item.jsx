@@ -2,9 +2,9 @@
 function Item({itemValue, itemName}){
 
     return(
-        <div>
-            {itemName} : "{itemValue}"
-        </div>
+            <p>
+                "{itemValue}"
+            </p>
     )
 
 }

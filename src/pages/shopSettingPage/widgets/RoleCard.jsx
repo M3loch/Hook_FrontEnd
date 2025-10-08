@@ -2,6 +2,8 @@ import { useContext } from "react"
 import { Context } from "../../../App"
 import Button from "../../../shared/Button"
 
+import cross from '../../../assets/cross.svg'
+
 function RoleCard({Role, setRoleList}){
     const {shop, user} = useContext(Context)
 
@@ -20,12 +22,15 @@ function RoleCard({Role, setRoleList}){
     }
 
     return (
-        <div> 
-            {Role.role_name}
+        <div className="block-value"> 
+            <p>
+                "{Role.role_name}"
+            </p>
             <Button 
-                innerText={"X"}
+                innerText={<img src={cross} />}
                 value={Role.role_name}
                 clickEvent={deleteRole}
+                className={'cross'}
             />
         </div>
     )

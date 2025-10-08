@@ -5,6 +5,9 @@ import Input from "../../../shared/Input"
 import Button from "../../../shared/Button"
 import CheckBox from "../../../shared/CheckBox"
 import VisEditForm from "../shared/VisEditForm"
+
+import '../styles/roleBuilder.css'
+
 const newRole = new roleBuilder
 function RoleBuilderModal({setRoleList, setRoleBuilderModal}){
 
@@ -29,7 +32,10 @@ function RoleBuilderModal({setRoleList, setRoleBuilderModal}){
 
     const [step, setStep] = useState(0)
     function nextStep(){
-        setStep(prev => prev+1)
+        setStep(prev => prev + 1)
+    }
+    function prevStep(){
+        setStep(prev => prev - 1)
     }
 
     const [roleName, setRoleName] = useState('')
@@ -59,18 +65,19 @@ function RoleBuilderModal({setRoleList, setRoleBuilderModal}){
             case 0:
                 return (
                     <>
-                        Введите название новой роли:
+                        <p className="master-setting-name">
+                            Введите название новой роли:
+                        </p>
                         <Input 
                             placeholder={"Название роли"}
                             onChange={setRoleName}
                             value={roleName}
-                            max={15}
                         />
                         <Button 
-                            innerText={"Сохранить"}
+                            innerText={"Далее"}
                             clickEvent={(roleName)=>{
-                                newRole.roleName = roleName; 
                                 nextStep()
+                                newRole.roleName = roleName; 
                             }}
                             value={roleName}
                         />
@@ -79,16 +86,18 @@ function RoleBuilderModal({setRoleList, setRoleBuilderModal}){
             case 1: 
                 return(
                     <>
-                        Выберите доступные для просмотра страницы:
-                        Заказы : 
+                        <p className="master-setting-name">
+                            Выберите доступные для просмотра страницы:
+                        </p>
                         <CheckBox 
                             onChange={setOrderPage}
                             value={ordersPage}
+                            label={'Заказы'}
                         />
-                        Настройки : 
                         <CheckBox 
                             onChange={setSettingPage}
                             value={settingPage}
+                            label={'Настройки'}
                         />
                         
                         <Button 
@@ -99,19 +108,26 @@ function RoleBuilderModal({setRoleList, setRoleBuilderModal}){
                                 nextStep()
                             }}
                         />
+                        <Button 
+                            innerText={"Назад"}
+                            className={'hollow-button'}
+                            clickEvent={
+                                prevStep
+                            }
+                        />
                     </>
                 )
             case 2:
                 return(
                     <>
-                        Выберите доступные для просмотра и изменения  настройки:<br/>
-
-                        Название Заведения: 
-                            Изменение: 
-                                <CheckBox 
-                                    onChange={setShopNameEdit}
-                                    value={shopNameEdit} 
-                                />
+                        <p className="master-setting-name">
+                            Выберите доступные для просмотра и изменения  настройки:<br/>
+                        </p>
+                            <CheckBox 
+                                label={'Изменение названия заведения'}
+                                onChange={setShopNameEdit}
+                                value={shopNameEdit} 
+                            />
                         <br/>
 
                         <VisEditForm 
@@ -176,14 +192,20 @@ function RoleBuilderModal({setRoleList, setRoleBuilderModal}){
 
                             }}
                         />
+                        <Button 
+                            innerText={"Назад"}
+                            className={'hollow-button'}
+                            clickEvent={
+                                prevStep
+                            }
+                        />
                     </>
                 )
             case 3:
                 return(
                     <>
-                        Разрешить просмотр и изменение всех стадий заказа
                         <VisEditForm 
-                            setting={"Разрешить?"}
+                            setting={"Разрешить просмотр и/или изменение всех стадий заказа?"}
                             vis={visBypass}
                             edit={editBypass}
                             setVis={setVisBypass}
@@ -196,6 +218,13 @@ function RoleBuilderModal({setRoleList, setRoleBuilderModal}){
                                 CreateNewRole()
                             }}
                         />
+                        <Button 
+                            innerText={"Назад"}
+                            className={'hollow-button'}
+                            clickEvent={
+                                prevStep
+                            }
+                        />
                     </>
                 )
             default: null
@@ -204,9 +233,17 @@ function RoleBuilderModal({setRoleList, setRoleBuilderModal}){
         }
     }
     return (
-        <>
-            {MultiStepModal()}
-        </>
+        <div className="modal-bg">
+            <div className="modal-master">
+                {MultiStepModal()}
+                <Button 
+                    clickEvent={setRoleBuilderModal}
+                    value={false}
+                    innerText={'Отмена'}
+                    className={'hollow-button'}
+                />
+            </div>
+        </div>
     )    
 }
 

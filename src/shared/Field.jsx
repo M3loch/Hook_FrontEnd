@@ -64,7 +64,7 @@ function Field({value, setValue, callBack, placeholder, innerText, max = null, m
                             className="value-container" 
                             onClick={()=> setEditMode(true)}
                         >
-                            <p>{value}</p>
+                           <p>{value}</p>
                         </div>
             }
         </div>

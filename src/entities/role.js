@@ -45,7 +45,6 @@ class roleBuilder{
     
     set roleName(name){
         this._roleName = name
-        console.log(this._roleName)
     }
 
     set isActive(bool){

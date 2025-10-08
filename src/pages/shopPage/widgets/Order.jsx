@@ -21,7 +21,7 @@ function Order({order}){
     const [closeOrderModal, setCloseOrderModal] = useState(false)
     const [nextStageModal, setNextStageModal] = useState(false)
 
-    const [nextStageButtonInnerText, setNextStageButtonInnerText] = useState('Следующая стадия')
+    const [nextStageButtonInnerText, setNextStageButtonInnerText] = useState(order.isLastStage() ? 'Закрыть заказ' : 'Следующая стадия')
 
     const [comment, setComment] = useState(order.comment)
     const [discount, setDiscount] = useState(order.discount)
@@ -143,7 +143,6 @@ function Order({order}){
                                     innerText={'Обновить'}
                                     />
                         </div>
-                            <div className="comment" >
                                 <Field 
                                     value={comment}
                                     setValue={setComment}
@@ -152,11 +151,11 @@ function Order({order}){
                                     innerText={'Обновить'}
                                     textArea={true}
                                 />
-                            </div>
                             <div className="time-overs">
                                 {
                                     order.timeOversInterface.map((element) => {
                                         return <TimeOver 
+                                            key={element.data}
                                             value={element.data}
                                             stage={element.stage}
                                             isPositive={element.isPositive}

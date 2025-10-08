@@ -12,17 +12,19 @@ function VisEditForm({setting, vis, setVis, edit, setEdit}){
     }
     return (
         <>
-        {setting}:
-        Просмотр:
-            <CheckBox 
-                onChange={setVis}
-                value={vis}
-            />
-        Изменение:
-            <CheckBox 
-                onChange={SetEditTrue}
-                value={edit}
-            />
+        <p className="master-setting-name">
+            {setting}:
+        </p>
+        <CheckBox 
+            label={'Просмотр'}
+            onChange={setVis}
+            value={vis}
+        />
+        <CheckBox 
+            label={'Изменение'}
+            onChange={SetEditTrue}
+            value={edit}
+        />
         
         <br/>
         </>
