@@ -1,0 +1,27 @@
+.categories-block-label,
+.tables-block-label,
+.discounts-block-label
+{
+    width: 130px;
+}
+
+
+
+.categories-block-values,
+.tables-block-values,
+.discounts-block-values
+{
+    width:350px;
+}
+
+.categories-table,
+.tables-table,
+.discounts-table
+{
+    width:630px;
+
+}
+
+.categories-table{
+    margin-bottom: 20px;
+}

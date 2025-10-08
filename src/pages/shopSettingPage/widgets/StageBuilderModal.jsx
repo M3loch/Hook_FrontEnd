@@ -35,7 +35,7 @@ function StageBuilderModal({setStagebuilderModal, stageList, setStageList }){
 
         newStageList.push({
             stage_name: stageName,
-            stage_duration: stageDuration,
+            duration: Number(stageDuration),
             visible_to: visibleTo,
             edit_permission: editPermission
         })
@@ -105,7 +105,6 @@ function StageBuilderModal({setStagebuilderModal, stageList, setStageList }){
                                 <CheckBox
                                     key={role.role_name}
                                     label={role.role_name}
-                                    // value={visibleTo.includes(role.role_name)}
                                     onChange={()=>{
                                         setVisibleTo(prev => { 
                                             if (prev.includes(role.role_name)){
@@ -146,7 +145,6 @@ function StageBuilderModal({setStagebuilderModal, stageList, setStageList }){
                                     <CheckBox
                                         key={role.role_name}
                                         label={role.role_name}
-                                        value={editPermission.includes(role.role_name)}
                                         onChange={()=>{
                                             setEditPermission(prev => {
                                                 setCheckboxState(editPermission.includes(role.role_name))

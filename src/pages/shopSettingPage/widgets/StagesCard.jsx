@@ -23,22 +23,25 @@ function StageCard({Stage, stageList, setStageList, index}){
 
     return (
         <div className="block-value">
-            <p>
-                Название стадии: "{Stage.stage_name}"
-            </p>
-            <p>
-                Длительность: {Stage.duration} мин
-            </p>
-            <p>
-                Доступен к просмотру: {Stage.visible_to.map((role)=>{
-                    return role
+            <div className='stage-table-column stage-index'>
+                {index}
+            </div>
+            <div className='stage-table-column'>
+                "{Stage.stage_name}"
+            </div>
+            <div className='stage-table-column'>
+                {Stage.duration} мин
+            </div>
+            <div className='stage-table-column'>
+                {Stage.visible_to.map((role)=>{
+                    return <p>{role}</p>
                 })}
-            </p>
-            <p>
-                Доступен к изменению: {Stage.edit_permission.map((role)=>{
-                    return role
+            </div>
+            <div className='stage-table-column'>
+                {Stage.edit_permission.map((role)=>{
+                    return <p>{role}</p>
                 })}
-            </p>
+            </div>
             <Button 
                 innerText={<img src={cross} />}
                 value={Stage.stageName}

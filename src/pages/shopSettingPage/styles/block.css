@@ -1,15 +1,9 @@
 .block {
     display: flex;
     flex-direction: row;
-    align-items:stretch;
-    margin: 0;
-    padding: 0;
-    height: auto;
-    width: 100%;
 }
 
-.block-setting-container{
-    width: 150px;
+.block-label{
     background: var(--field-label);
     color: var(--text-dark);
     padding: 0;
@@ -17,14 +11,17 @@
     box-sizing: border-box;
     border-bottom: solid var(--text-dark) 1px;
     font-weight:700;
+    flex-shrink: 0;
 }
+
+
 .block-values{
-    box-sizing: border-box;
-    height: auto;
-    margin: 0;
-    padding: 0;
     display: flex;
     flex-direction: column;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    flex-shrink: 0;
     
 }
 
@@ -32,9 +29,8 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    height: 100%;
+    min-height: 66px;
     align-items: center;
-    min-width: 200px;
     background: var(--field-value);
     color: var(--text-dark);
     border-bottom: solid var(--text-dark) 1px;
@@ -51,16 +47,22 @@
 }
 .cross{
     width: 20px;
-    margin-right: 1px;
-    margin-top: 1px;
-    margin-left: 1px;
+    margin-right: 10px;
 }
 .block-controls{
     display: flex;
     flex-direction: row; 
+    width: auto;
     align-items: center;
-    min-width: 200px;
+    justify-content: center;
     background: var(--field-value);
-    color: var(--text-dark);
+    border-left: solid var(--text-dark) 1px;
     border-bottom: solid var(--text-dark) 1px;
+    color: var(--text-dark);
+    flex-shrink: 0;
+    flex-grow: 1;
+    box-sizing: border-box;
+}
+.block-label > p{
+    padding-left: 20px;
 }

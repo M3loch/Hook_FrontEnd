@@ -21,6 +21,10 @@
     user-select: none;
 }
 
+main{
+    height: fit-content;
+}
+
 body {
     background: var(--bg); 
     font-family: 'Mulish', 'Roboto',Courier, monospace;   

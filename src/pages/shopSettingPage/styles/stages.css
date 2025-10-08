@@ -1,3 +1,43 @@
 .stages-setting-table{
-    width: 100%;
+    width: fit-content;
+    margin-top: 20px;
+
+}
+
+.label{
+    background: var(--field-label);
+    display: flex;
+    height: 70px;
+    flex-direction: row;
+    color: var(--text-dark);
+    font-weight: 700;
+}
+
+.stage-label, .stage-table-column{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    width: 200px;
+    margin-left: 20px;
+}
+.stage-table-column > p{
+    margin: 0;
+    padding: 0;
+}
+
+
+.stage-index{
+    margin-left: 0;
+    width: 90px;
+    padding-left: 20px;
+    padding-top: 10px;
+    background: var(--field-label);
+    height: 100%;
+} 
+
+.stage-index-label{
+    width: 90px;
+    padding-left: 20px;
+    margin-left: 0;
+    background: var(--table-corner);
 }

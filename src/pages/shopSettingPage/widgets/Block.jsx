@@ -8,7 +8,7 @@ import cross from '../../../assets/cross.svg'
 
 import '../styles/block.css'
 
-function Block({list, itemName, settingName, category}) {
+function Block({list, itemName, settingName, category, className}) {
     const {shop, user} = useContext(Context)
     const [newItemModal, setNewItemModal] = useState(false)
     const [targetList, setTargetList] = useState(list)
@@ -28,24 +28,28 @@ function Block({list, itemName, settingName, category}) {
     }
 
     return (
+        
+        <div className={`${className}-table`}>
         <div className="block">
-            <p className="block-setting-container">
-                {category}:
-            </p>
-            <div className="block-values">
+            <div className={`block-label ${className}-block-label`}>
+                <p>{category}:</p>
+            </div>
+            <div className={`block-values ${className}-block-values`}>
 
             {targetList[0] !== undefined 
                 ? targetList.map((item) => {
                     return (
-                        <div key={crypto.randomUUID()} className="block-value">
+                        <div key={crypto.randomUUID()} className={`block-value ${className}-block-value`}>
                             <Item  itemName={itemName} itemValue={item} /> <Button innerText={<img className="cross" src={cross} />} clickEvent={deleteItem} value={item}/>
                         </div>
                 )})
-                : <div key={crypto.randomUUID()} className="block-value">N/a</div> 
+                : <div key={crypto.randomUUID()} className={`block-value ${className}-block-value ${className}-na`}>
+                    <p>N/a</p>
+                </div> 
             }
         </div>
 
-            <div className="block-controls" >
+            <div className={`block-controls ${className}-block-controls`} >
             {
                 newItemModal && <NewItemForm 
                 setNewItemModal={setNewItemModal} 
@@ -55,6 +59,7 @@ function Block({list, itemName, settingName, category}) {
             }
                 <Button innerText={"Добавить"} clickEvent={setNewItemModal} value={true}/>
             </div>
+        </div>
         </div>
     ) 
 
