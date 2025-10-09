@@ -1,12 +1,10 @@
-
-
-.button-box{
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
+.button-box {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
 }
 
-.button-box > button{
-    margin-top: 10px;
-    padding: 20px 25px;
+.button-box > button {
+	margin-top: 10px;
+	padding: 20px 25px;
 }

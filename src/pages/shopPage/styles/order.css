@@ -1,128 +1,123 @@
 .order {
-    background: #161616;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border-radius: 10px;
-    width: 300px;
-    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.301);
-    height: fit-content;
+	background: #161616;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	border-radius: 10px;
+	width: 300px;
+	box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.301);
+	height: fit-content;
 }
 
-
-
-.order-header{
-    display: flex;
-    flex-direction: row;
-    margin-top: 20px;
-    margin-bottom: 5px;
-    margin-right: 20px;
-    margin-left: 20px;
+.order-header {
+	display: flex;
+	flex-direction: row;
+	margin-top: 20px;
+	margin-bottom: 5px;
+	margin-right: 20px;
+	margin-left: 20px;
 }
 
 .order-header > button {
-    
-    background: var(--main);
-    padding: 0px;
-    width: 32px;
-    height: 32px;
-    margin-left: 7px;
-    margin-top: 0;
-    align-items: center;
-    border-radius: 4px;  
+	background: var(--main);
+	padding: 0px;
+	width: 32px;
+	height: 32px;
+	margin-left: 7px;
+	margin-top: 0;
+	align-items: center;
+	border-radius: 4px;
 }
 .order-header > button > img {
-    padding-top: 4px;
+	padding-top: 4px;
 }
 
 .stage-name {
-    color: white;
-    background: #232323;
-    text-align: center;
-    width: 200px;
-    height: 32px;
-    margin-right: 7px;
-    margin-left: 7px;
-    border-radius: 4px;
-    font-size:  20px;
+	color: white;
+	background: #232323;
+	text-align: center;
+	width: 200px;
+	height: 32px;
+	margin-right: 7px;
+	margin-left: 7px;
+	border-radius: 4px;
+	font-size: 20px;
 }
 
 .timer {
-    background: #242424;
-    color: white;
-    font-size: 36px;
-    font-weight: bold;
-    width: 246px;
-    height: 58px;
-    margin-left: 20px;
-    margin-right: 20px;
-    border-radius: 4px;
-    text-align: center;
-    padding-top: 13px;
+	background: #242424;
+	color: white;
+	font-size: 36px;
+	font-weight: bold;
+	width: 246px;
+	height: 58px;
+	margin-left: 20px;
+	margin-right: 20px;
+	border-radius: 4px;
+	text-align: center;
+	padding-top: 13px;
 }
-.control{
-    margin-top: 10px;
-    width: calc(100% - 50px);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.change-stage-button{
-    margin: 0;
-    border-radius: 4px;
+.control {
+	margin-top: 10px;
+	width: calc(100% - 50px);
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 }
 
-.compress-button{
-    background: #111111;
-    display: flex;
-    justify-content: center;
-    padding: 7px 0px;
-    margin: 10px 0;
-    border-radius: 4px;
-}
-.compress-button:hover{
-    background: #0f0f0f;
+.change-stage-button {
+	margin: 0;
+	border-radius: 4px;
 }
 
-.arrow-up{
-    transform: rotate(180deg);    
-    transition: ease-in-out 0.1s;
-
+.compress-button {
+	background: #111111;
+	display: flex;
+	justify-content: center;
+	padding: 7px 0px;
+	margin: 10px 0;
+	border-radius: 4px;
+}
+.compress-button:hover {
+	background: #0f0f0f;
 }
 
-.arrow-down{  
-    transition: ease-in-out 0.1s;
-
+.arrow-up {
+	transform: rotate(180deg);
+	transition: ease-in-out 0.1s;
 }
 
-.order-info{
-    display: flex;
-    flex-direction: column;
-    border-radius: 10px;
-    padding:20px;
-    padding-top: 0;
-    width: 240px;
+.arrow-down {
+	transition: ease-in-out 0.1s;
 }
-.time-overs{
-    margin-top: 10px;
+
+.order-info {
+	display: flex;
+	flex-direction: column;
+	border-radius: 10px;
+	padding: 20px;
+	padding-top: 0;
+	width: 240px;
+}
+.time-overs {
+	margin-top: 10px;
 }
 
 .time-over {
-    box-sizing: border-box;
-    display: flex;
-    height:40px;
-    margin: 0;
-    flex-direction: row;
-    justify-content:space-between;
-    align-items: center ;
+	box-sizing: border-box;
+	display: flex;
+	height: 40px;
+	margin: 0;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
 }
 
-.negative, .positive{
-    margin: 0;
+.negative,
+.positive {
+	margin: 0;
 }
 
-.negative{
-    color: red;
+.negative {
+	color: red;
 }
-

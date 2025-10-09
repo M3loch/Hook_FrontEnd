@@ -1,39 +1,37 @@
 import OrderEntity from "../entities/order";
 
+class Orders {
+	constructor(shop) {
+		this._shopInstance = shop;
+	}
 
-class Orders{
+	init(orderArray, setOrders) {
+		this._orderArray = orderArray;
+		this._setOrders = setOrders;
+	}
 
-    constructor(shop){
-        this._shopInstance = shop
-    }
+	start() {
+		this.time = setInterval(() => {
+			this._orderArray = this._orderArray.map((order) => {
+				order.makeStep();
+				return order;
+			});
+			this._setOrders([...this._orderArray]);
+		}, 1000);
+	}
 
-    init(orderArray, setOrders){
-        this._orderArray = orderArray
-        this._setOrders = setOrders
-    };
-    
-    start(){
-        this.time = setInterval(() => {
-            this._orderArray = this._orderArray.map(order => {
-                order.makeStep();
-                return order 
-            })
-            this._setOrders([...this._orderArray])
-        }, 1000);
-    }
-    
-    updateList(array){
-        const resultArray = array.map((order) => {
-            return new OrderEntity(order, this._shopInstance)
-        })
+	updateList(array) {
+		const resultArray = array.map((order) => {
+			return new OrderEntity(order, this._shopInstance);
+		});
 
-        this._orderArray = resultArray
-        this._setOrders([...resultArray])
-    }
+		this._orderArray = resultArray;
+		this._setOrders([...resultArray]);
+	}
 
-    stop(){
-        clearInterval(this.time)
-    }
+	stop() {
+		clearInterval(this.time);
+	}
 }
 
-export default Orders
+export default Orders;

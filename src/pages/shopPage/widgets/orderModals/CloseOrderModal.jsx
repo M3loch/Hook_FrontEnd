@@ -1,40 +1,29 @@
-import { useContext } from "react"
-import Button from "../../../../shared/Button"
-import { Context } from "../../../../App"
+import { useContext } from "react";
+import Button from "../../../../shared/Button";
+import { Context } from "../../../../store/Context";
 
+function CloseOrderModal({ setCloseOrderModal, order }) {
+	const { shop, orders } = useContext(Context);
 
-function CloseOrderModal({setCloseOrderModal, order}) {
+	async function closeOrder(closeStatus) {
+		const newOrders = await shop.closeOrder(order.orderID, closeStatus);
+		orders.updateList(newOrders);
+	}
 
-    const {shop, orders} = useContext(Context)
+	return (
+		<div className="pop-up">
+			<p>Закрыть заказ?</p>
+			<Button innerText={"Перезабив"} clickEvent={closeOrder} value={2} />
 
-
-    async function closeOrder(closeStatus){
-        const newOrders = await shop.closeOrder(order.orderID, closeStatus)
-        orders.updateList(newOrders)
-    }
-
-    return (
-        <div className="pop-up">
-            <p>Закрыть заказ?</p>
-            <Button 
-                innerText={"Перезабив"}
-                clickEvent={closeOrder}
-                value={2}
-            />
-
-            <Button 
-                innerText={"Закрыть"}
-                clickEvent={closeOrder}
-                value={1}
-            />
-            <Button 
-                innerText={"Отмена"}
-                clickEvent={setCloseOrderModal}
-                className={'hollow-button'}
-                value={false}
-            />
-        </div>
-    )
+			<Button innerText={"Закрыть"} clickEvent={closeOrder} value={1} />
+			<Button
+				innerText={"Отмена"}
+				clickEvent={setCloseOrderModal}
+				className={"hollow-button"}
+				value={false}
+			/>
+		</div>
+	);
 }
 
-export default CloseOrderModal
+export default CloseOrderModal;

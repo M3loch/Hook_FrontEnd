@@ -1,47 +1,42 @@
-import { useContext } from "react"
-import Button from "../../../../shared/Button"
-import { Context } from "../../../../App"
+import { useContext } from "react";
+import Button from "../../../../shared/Button";
+import { Context } from "../../../../store/Context";
 
+function NextStageModal({
+	setCloseOrderModal,
+	setNextStageModal,
+	order,
+	setNextStageButtonInnerText,
+}) {
+	const { orders, user } = useContext(Context);
+	setCloseOrderModal(false);
 
-function NextStageModal({setCloseOrderModal, setNextStageModal, order, setNextStageButtonInnerText}) {
+	if (order.isLastStage()) {
+		setCloseOrderModal(true);
+		setNextStageModal(false);
+	}
+	async function nextStage() {
+		const newOrders = await order.nextStage(user.userID);
+		!newOrders ? setCloseOrderModal(true) : orders.updateList(newOrders);
 
-    const { orders, user } = useContext(Context)
-    setCloseOrderModal(false)
+		setNextStageModal(false);
 
-    if (order.isLastStage()){
-        setCloseOrderModal(true)
-        setNextStageModal(false)
-    }
-    async function nextStage(){
-        const newOrders = await order.nextStage(user.userID)
-        !newOrders
-            ?
-                setCloseOrderModal(true)
-            :
-                orders.updateList(newOrders)
+		order.isNextIsLastStage() && setNextStageButtonInnerText("Закрыть заказ");
+	}
 
-            setNextStageModal(false)
+	return (
+		<div className="pop-up">
+			<p>Перевести заказ на следующую стадию?</p>
+			<Button innerText={"Да"} clickEvent={nextStage} />
 
-            order.isNextIsLastStage() && setNextStageButtonInnerText("Закрыть заказ")
-            }
-
-    return (
-        <div className="pop-up">
-
-            <p>Перевести заказ на следующую стадию?</p>
-            <Button 
-                innerText={"Да"}
-                clickEvent={nextStage}
-            />
-
-            <Button 
-                innerText={"Нет"}
-                clickEvent={setNextStageModal}
-                className={'hollow-button'}
-                value={false}
-            />
-        </div>
-    )
+			<Button
+				innerText={"Нет"}
+				clickEvent={setNextStageModal}
+				className={"hollow-button"}
+				value={false}
+			/>
+		</div>
+	);
 }
 
-export default NextStageModal
+export default NextStageModal;

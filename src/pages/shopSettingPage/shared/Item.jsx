@@ -1,12 +1,5 @@
-
-function Item({itemValue, itemName}){
-
-    return(
-            <p>
-                "{itemValue}"
-            </p>
-    )
-
+function Item({ itemValue }) {
+	return <p>"{itemValue}"</p>;
 }
 
-export default Item
+export default Item;

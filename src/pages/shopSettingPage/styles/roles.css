@@ -1,15 +1,13 @@
 .role-table {
-    width: auto;
-    margin-right: 20px;
+	width: auto;
+	margin-right: 20px;
 }
 
-.role-block-label{
-    width: 130px;
-    height: auto;
+.role-block-label {
+	width: 130px;
+	height: auto;
 }
 
-
-.role-block-values{
-    width:60%;
+.role-block-values {
+	width: 60%;
 }
-

@@ -1,54 +1,54 @@
-.stages-setting-table{
-    width: max-content;
-    max-width: 1187px;
-    margin-top: 20px;
-    
+.stages-setting-table {
+	width: max-content;
+	max-width: 1187px;
+	margin-top: 20px;
 }
 
-.label{
-    background: var(--field-label);
-    display: flex;
-    height: 70px;
-    flex-direction: row;
-    color: var(--text-dark);
-    font-weight: 700;
+.label {
+	background: var(--field-label);
+	display: flex;
+	height: 70px;
+	flex-direction: row;
+	color: var(--text-dark);
+	font-weight: 700;
 }
 
-.stage-label, .stage-table-column{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    width: 150px;
-    margin-left: 20px;
+.stage-label,
+.stage-table-column {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	width: 150px;
+	margin-left: 20px;
 }
-.stage-table-column > p{
-    margin: 0;
-    padding: 0;
+.stage-table-column > p {
+	margin: 0;
+	padding: 0;
 }
-.stage-label{
-    display: flex;
-    flex-direction: column;
-    font-size: smaller;
-    text-wrap: balance;
-    justify-content: center;
+.stage-label {
+	display: flex;
+	flex-direction: column;
+	font-size: smaller;
+	text-wrap: balance;
+	justify-content: center;
 }
-.stage-label > p{
-    margin: 0;
-    padding: 0;
+.stage-label > p {
+	margin: 0;
+	padding: 0;
 }
 
-.stage-index{
-    margin-left: 0;
-    width: 90px;
-    padding-left: 20px;
-    padding-top: 10px;
-    background: var(--field-label);
-    height: 100%;
-} 
+.stage-index {
+	margin-left: 0;
+	width: 90px;
+	padding-left: 20px;
+	padding-top: 10px;
+	background: var(--field-label);
+	height: 100%;
+}
 
-.stage-index-label{
-    width: 90px;
-    padding-left: 20px;
-    margin-left: 0;
-    background: var(--table-corner);
+.stage-index-label {
+	width: 90px;
+	padding-left: 20px;
+	margin-left: 0;
+	background: var(--table-corner);
 }

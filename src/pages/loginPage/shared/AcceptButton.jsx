@@ -1,16 +1,20 @@
-function AcceptButton({clickEvent, value, innerText, buttonClassName='', preEffect}) {
+function AcceptButton({
+	clickEvent,
+	value,
+	innerText,
+	buttonClassName = "",
+	preEffect,
+}) {
+	function acceptEvent() {
+		preEffect && preEffect();
+		clickEvent(value);
+	}
 
-    function acceptEvent(event) {
-        preEffect && preEffect()
-        clickEvent(value)
-    }
-
-    return (
-        <button onClick={acceptEvent} className={buttonClassName}>
-            {innerText}
-        </button>
-    )
-
+	return (
+		<button onClick={acceptEvent} className={buttonClassName}>
+			{innerText}
+		</button>
+	);
 }
 
-export default AcceptButton
+export default AcceptButton;

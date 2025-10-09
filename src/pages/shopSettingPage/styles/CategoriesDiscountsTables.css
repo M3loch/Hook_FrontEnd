@@ -1,28 +1,22 @@
 .categories-block-label,
 .tables-block-label,
-.discounts-block-label
-{
-    width: 130px;
+.discounts-block-label {
+	width: 130px;
 }
-
-
 
 .categories-block-values,
 .tables-block-values,
-.discounts-block-values
-{
-    width:60%;
+.discounts-block-values {
+	width: 60%;
 }
 
 .categories-table,
 .tables-table,
-.discounts-table
-{
-    width:auto;
-    margin-right: 20px;
-
+.discounts-table {
+	width: auto;
+	margin-right: 20px;
 }
 
-.categories-table{
-    margin-bottom: 20px;
+.categories-table {
+	margin-bottom: 20px;
 }

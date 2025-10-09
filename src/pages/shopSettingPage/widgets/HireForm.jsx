@@ -1,115 +1,101 @@
+import { useContext, useState } from "react";
+import { Context } from "../../../store/Context";
+import Button from "../../../shared/Button";
+import Input from "../../../shared/Input";
+import Select from "../../../shared/Select";
 
+function HireForm({ setHireForm, setEmployeeList }) {
+	const { shop, user } = useContext(Context);
 
-import { useContext, useState } from "react"
-import {Context} from "../../../App"
-import Button from "../../../shared/Button"
-import Input from "../../../shared/Input"
-import Select from "../../../shared/Select"
+	const roleList = [];
+	for (const role in shop.roles.data) {
+		roleList.push(shop.roles.data[role].role_name);
+	}
 
+	const [step, setStep] = useState(0);
+	const [employeeID, setEmployeeID] = useState("");
+	const [employeeRole, setEmployeeRole] = useState("");
 
-function HireForm({setHireForm, setEmployeeList}){
-    const {shop, user} = useContext(Context)
+	function nextStep() {
+		setStep((prev) => prev + 1);
+	}
+	function prevStep() {
+		setStep((prev) => prev - 1);
+	}
 
-    const roleList = []
-    for (const role in shop.roles.data){
-        roleList.push(shop.roles.data[role].role_name)
-    }   
-    console.log(roleList)
+	async function HireEmployee() {
+		const newEmployeeList = {};
+		for (const employee of shop.employees.data) {
+			console.log(employee);
+			newEmployeeList[employee.employee_id] = employee.employee_role;
+		}
 
-    const [step, setStep] = useState(0)
-    const [employeeID, setEmployeeID] = useState('')
-    const [employeeRole, setEmployeeRole] = useState('')
-    const [roles, setRoles] = useState(roleList)
+		newEmployeeList[employeeID] = employeeRole;
 
-    
-    function nextStep(){
-        setStep(prev => prev+1)
-    }
-    function prevStep(){
-        setStep(prev => prev-1)
-    }
+		const newShopInfo = await shop.updateShop(user.accessToken, {
+			employees: newEmployeeList,
+		});
 
-    async function HireEmployee(){
+		setEmployeeList(newShopInfo.employees.data);
+	}
 
-        const newEmployeeList = {}
-        for (const employee of shop.employees.data){
-            console.log(employee)
-            newEmployeeList[employee.employee_id] = employee.employee_role
-        }
+	function MultiStepModal() {
+		switch (step) {
+			case 0:
+				return (
+					<>
+						<p className="master-setting-name">
+							Введите название новой стадии:
+						</p>
+						<Input
+							placeholder={"Введите ID Сотрудника"}
+							onChange={setEmployeeID}
+							value={employeeID}
+						/>
+						<Button innerText={"Далее"} clickEvent={nextStep} />
+					</>
+				);
+			case 1:
+				return (
+					<>
+						<p className="master-setting-name">
+							Выберите должность сотрудникаЖ
+						</p>
+						<Select
+							selectorName={"Должность"}
+							options={roleList}
+							setOption={setEmployeeRole}
+						/>
+						<Button
+							innerText={"Нанять"}
+							clickEvent={() => {
+								HireEmployee();
+								setHireForm(false);
+							}}
+						/>
+						<Button
+							innerText={"Назад"}
+							className={"hollow-button"}
+							clickEvent={prevStep}
+						/>
+					</>
+				);
+		}
+	}
 
-        newEmployeeList[employeeID] = employeeRole
-        
-        const newShopInfo = await shop.updateShop(user.accessToken, {employees : newEmployeeList})
-
-        setEmployeeList(newShopInfo.employees.data)
-    }
-
-    function MultiStepModal(){
-        switch(step){
-            case 0:
-                return (
-                    <>
-                        <p className="master-setting-name">
-                            Введите название новой стадии:
-                        </p>
-                        <Input 
-                            placeholder={"Введите ID Сотрудника"}
-                            onChange={setEmployeeID}
-                            value={employeeID}
-                        />
-                        <Button 
-                            innerText={"Далее"}
-                            clickEvent={
-                                nextStep
-                            }
-                        />
-                    </>
-                );
-            case 1:
-                return (
-                    <>
-                        <p className="master-setting-name">
-                            Выберите должность сотрудникаЖ
-                        </p>
-                        <Select
-                            selectorName={"Должность"}
-                            options={roles}
-                            setOption={setEmployeeRole}
-                        />
-                        <Button 
-                            innerText={"Нанять"}
-                            clickEvent={()=>{
-                                HireEmployee()
-                                setHireForm(false)
-                            }
-                            }
-                        />
-                        <Button 
-                            innerText={"Назад"}
-                            className={'hollow-button'}
-                            clickEvent={
-                                prevStep
-                            }
-                        />
-                    </>
-                    )
-        }
-    }
-
-    return (
-        <div className="modal-bg">
-            <div className="modal-master">
-                {MultiStepModal()}
-                <Button 
-                    clickEvent={setHireForm}
-                    value={false}
-                    innerText={'Отмена'}
-                    className={'hollow-button'}
-                />
-            </div>
-        </div>
-    )
+	return (
+		<div className="modal-bg">
+			<div className="modal-master">
+				{MultiStepModal()}
+				<Button
+					clickEvent={setHireForm}
+					value={false}
+					innerText={"Отмена"}
+					className={"hollow-button"}
+				/>
+			</div>
+		</div>
+	);
 }
 
-
-export default HireForm
+export default HireForm;

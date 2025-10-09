@@ -1,111 +1,152 @@
-import ShopService from "../services/shopSevrice/shopService"
-import { makeAutoObservable, toJS } from "mobx";
+import ShopService from "../services/shopSevrice/shopService";
+import { makeAutoObservable } from "mobx";
 import OrderService from "../services/orderService/orderService";
 
-class Shop{
+class Shop {
+	_user = "";
 
-    _user = ''
+	_shopID = "";
+	_shopName = "";
+	_tables = [];
+	_stages = [];
+	_discounts = undefined;
+	_roles = undefined;
+	_ordersAttributes = undefined;
+	_roleName = undefined;
+	_isChosen = false;
 
-    _shopID = ''
-    _shopName = ''
-    _tables = []
-    _stages = []
-    _discounts = undefined
-    _roles = undefined
-    _ordersAttributes = undefined
-    _roleName = undefined
-    _isChosen = false;
+	constructor() {
+		makeAutoObservable(this);
+	}
 
-    constructor(){
-        makeAutoObservable(this)
-    }
+	set user(user) {
+		this._user = user;
+	}
 
+	exit() {
+		this._shopID = undefined;
+		this._shopName = undefined;
+		this._categories = undefined;
+		this._tables = undefined;
+		this._stages = undefined;
+		this._discounts = undefined;
+		this._roles = undefined;
+		this._isChosen = false;
+		this._pages = undefined;
+	}
 
-    set user(user){
-        this._user = user
-    }
+	_setShop({
+		shop_id,
+		shop_name,
+		tables,
+		stages,
+		discounts,
+		roles,
+		categories,
+		pages,
+		employees,
+	}) {
+		this._shopID = shop_id;
+		this._shopName = shop_name;
+		this._categories = categories && categories;
+		this._tables = tables && tables;
+		this._stages = stages && stages;
+		this._discounts = discounts && discounts;
+		this._employees = employees && employees;
+		this._roles = roles && roles;
+		this._isChosen = true;
+		this._pages = pages;
+	}
 
-    exit(){
-        
-        this._shopID = undefined
-        this._shopName = undefined
-        this._categories = undefined
-        this._tables = undefined
-        this._stages = undefined
-        this._discounts = undefined
-        this._roles = undefined
-        this._isChosen = false
-        this._pages = undefined 
-    }
+	async getShop(shopID) {
+		const shop = await ShopService.getShop(shopID, this._user);
+		this._setShop(shop);
+	}
 
-    _setShop({shop_id, shop_name, tables, stages, discounts, roles, categories, pages, employees})
-    {
-        this._shopID = shop_id
-        this._shopName = shop_name
-        this._categories = categories && categories
-        this._tables = tables && tables 
-        this._stages = stages && stages
-        this._discounts = discounts && discounts
-        this._employees = employees && employees
-        this._roles = roles && roles
-        this._isChosen = true
-        this._pages = pages 
-    }
+	async updateShop(accessToken, updateRequest) {
+		const newShopInfo = await ShopService.updateShop(
+			accessToken,
+			this.user,
+			this.shopID,
+			updateRequest
+		);
+		newShopInfo && this._setShop(newShopInfo);
+		return newShopInfo;
+	}
 
-    async getShop(shopID){
-        const shop = await ShopService.getShop(shopID, this._user)
-        this._setShop(shop)
-    }
+	async getOrders() {
+		return await OrderService.getOrders(this._shopID, this._user);
+	}
 
-    async updateShop(accessToken, updateRequest){
-        const newShopInfo = await ShopService.updateShop(accessToken, this.user, this.shopID, updateRequest)
-        newShopInfo && this._setShop(newShopInfo)
-        return newShopInfo
-    }
+	async createOrder({
+		tableID,
+		discountID,
+		categoryID,
+		strength,
+		flavoures,
+		isPaid,
+		comment,
+	}) {
+		return await OrderService.createOrder({
+			userID: this._user,
+			shopID: this.shopID,
+			tableID: tableID,
+			discountID: discountID,
+			categoryID: categoryID,
+			strength: strength,
+			flavoures: flavoures,
+			isPaid: isPaid,
+			comment: comment,
+		});
+	}
 
-    
-    async getOrders(){
-        return await OrderService.getOrders(this._shopID, this._user)
-    }
+	async closeOrder(orderID, closeStatus) {
+		return await OrderService.closeOrder(
+			orderID,
+			closeStatus,
+			this._user,
+			this.shopID
+		);
+	}
 
-    async createOrder ({tableID, discountID, categoryID, strength, flavoures, isPaid, comment}){
+	async refresh() {
+		this.isChosen
+			? this._setShop(await ShopService.getShop(this.shopID, this._user))
+			: null;
+	}
 
-        return await OrderService.createOrder({
-            userID : this._user,
-            shopID : this.shopID,
-            tableID : tableID,
-            discountID: discountID,
-            categoryID: categoryID,
-            strength: strength,
-            flavoures: flavoures,
-            isPaid: isPaid,
-            comment: comment
-            
-        })
-    }
-
-    async closeOrder(orderID, closeStatus){
-        return await OrderService.closeOrder(orderID, closeStatus, this._user, this.shopID)
-    }
-
-    async refresh(){
-        this.isChosen
-            ?
-                this._setShop(await ShopService.getShop(this.shopID, this._user))
-            :
-                null
-    }
-    
-    get shopID(){return this._shopID}
-    get user(){return this._user}
-    get shopName(){return this._shopName}
-    get isChosen(){return this._isChosen}
-    get categories(){return this._categories}
-    get discounts(){return this._discounts}
-    get tables(){return this._tables}
-    get pages(){console.log(this._pages); return this._pages; }
-    get employees(){return this._employees}
-    get stages(){return this._stages}
-    get roles(){return this._roles}
+	get shopID() {
+		return this._shopID;
+	}
+	get user() {
+		return this._user;
+	}
+	get shopName() {
+		return this._shopName;
+	}
+	get isChosen() {
+		return this._isChosen;
+	}
+	get categories() {
+		return this._categories;
+	}
+	get discounts() {
+		return this._discounts;
+	}
+	get tables() {
+		return this._tables;
+	}
+	get pages() {
+		return this._pages;
+	}
+	get employees() {
+		return this._employees;
+	}
+	get stages() {
+		return this._stages;
+	}
+	get roles() {
+		return this._roles;
+	}
 }
-export default Shop
+export default Shop;

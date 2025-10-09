@@ -1,70 +1,68 @@
 .block {
-    display: flex;
-    flex-direction: row;
+	display: flex;
+	flex-direction: row;
 }
 
-.block-label{
-    background: var(--field-label);
-    color: var(--text-dark);
-    padding: 0;
-    margin: 0;;
-    box-sizing: border-box;
-    border-bottom: solid var(--text-dark) 1px;
-    font-weight:700;
-    flex-shrink: 0;
+.block-label {
+	background: var(--field-label);
+	color: var(--text-dark);
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	border-bottom: solid var(--text-dark) 1px;
+	font-weight: 700;
+	flex-shrink: 0;
 }
 
-
-.block-values{
-    display: flex;
-    flex-direction: column;
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    flex-shrink: 0;
-    
+.block-values {
+	display: flex;
+	flex-direction: column;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	flex-shrink: 0;
 }
 
-.block-value{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    min-height: 66px;
-    height: 100%;
-    align-items: center;
-    background: var(--field-value);
-    color: var(--text-dark);
-    border-bottom: solid var(--text-dark) 1px;
+.block-value {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	min-height: 66px;
+	height: 100%;
+	align-items: center;
+	background: var(--field-value);
+	color: var(--text-dark);
+	border-bottom: solid var(--text-dark) 1px;
 }
 
 .block-value > p {
-    margin-left: 20px;
-    text-wrap: wrap;
-    text-wrap-style:balance;
-    white-space: unset;
+	margin-left: 20px;
+	text-wrap: wrap;
+	text-wrap-style: balance;
+	white-space: unset;
 }
 
-.block-value > button{
-    width: fit-content;
-    padding:6px 7px;
-    margin-right: 10px;
-    box-sizing: border-box;
+.block-value > button {
+	width: fit-content;
+	padding: 6px 7px;
+	margin-right: 10px;
+	box-sizing: border-box;
 }
-.cross{
-    width: 20px;
+.cross {
+	width: 20px;
 }
-.block-controls{
-    display: flex;
-    flex-direction: row; 
-    align-items: center;
-    justify-content: center;
-    background: var(--field-value);
-    border-left: solid var(--text-dark) 1px;
-    border-bottom: solid var(--text-dark) 1px;
-    color: var(--text-dark);
-    flex-shrink: 0;
-    box-sizing: border-box;
+.block-controls {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	background: var(--field-value);
+	border-left: solid var(--text-dark) 1px;
+	border-bottom: solid var(--text-dark) 1px;
+	color: var(--text-dark);
+	flex-shrink: 0;
+	box-sizing: border-box;
 }
-.block-label > p{
-    padding-left: 20px;
+.block-label > p {
+	padding-left: 20px;
 }
