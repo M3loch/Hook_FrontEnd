@@ -6,11 +6,9 @@
     border-radius: 10px;
     width: 300px;
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.301);
+    height: fit-content;
 }
 
-.is-comressed{
-    height: 260px;
-}
 
 
 .order-header{
@@ -99,15 +97,12 @@
 }
 
 .order-info{
-    position: relative;
-    background: #16161616;
     display: flex;
     flex-direction: column;
     border-radius: 10px;
-    width: 260px;
-    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.301);
     padding:20px;
     padding-top: 0;
+    width: 240px;
 }
 .time-overs{
     margin-top: 10px;

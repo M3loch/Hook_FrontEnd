@@ -39,7 +39,7 @@ function Stages({Stages}){
                             return(
                                 <StageCard 
                                     stageList={stageList}
-                                    key={index}
+                                    key={crypto.randomUUID()}
                                     index={index}
                                     Stage={stage}
                                     setStageList={setStageList}

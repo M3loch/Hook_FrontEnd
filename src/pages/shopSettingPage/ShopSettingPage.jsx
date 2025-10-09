@@ -7,6 +7,7 @@ import Stages from "./widgets/Stages"
 
 import './styles/CategoriesDiscountsTables.css'
 import './styles/shopNameTable.css'
+import Employees from "./widgets/Employees"
 
 function ShopSettingPage(){
     const {shop} = useContext(Context)
@@ -79,6 +80,13 @@ function ShopSettingPage(){
                     ?   <Stages 
                             Stages={shop.stages.data}
                         />
+                    :
+                        null
+            }
+            {
+                shop.employees && shop.employees.editable
+                    ?
+                        <Employees employees={shop.employees}/>
                     :
                         null
             }

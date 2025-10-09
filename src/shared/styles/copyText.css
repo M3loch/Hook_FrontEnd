@@ -1,0 +1,59 @@
+.copy-text{
+    cursor: pointer;
+    padding-right: 50px;
+    position: relative;
+    flex-shrink: 0;
+    text-wrap: wrap;
+    width:100%;
+    box-sizing: border-box;
+    padding-left: 10px;
+}
+
+.copy-text:hover{
+    color: rgb(0, 0, 0);
+    text-decoration: underline;
+}
+
+.copy-text:active{
+    color: rgb(255, 255, 255);
+    text-decoration: underline;
+}
+
+.copy-tooltip{
+    position: absolute;
+    background: transparent;
+    color: transparent;
+    padding: 5px;
+    top: -30px;
+    border-radius: 5px;
+    left: 25%;
+    width: fit-content;
+    transition: ease-in-out 80ms;
+}
+
+.copy-text:hover .copy-tooltip{
+    background: var(--bg-transparent);
+    color: white;
+    visibility: visible;
+    width: auto;
+}
+
+.copy-status{
+    position: absolute;
+    background: transparent;
+    color: transparent;
+    padding: 5px;
+    right: -150px;
+    top: 5px;
+    border-radius: 5px;
+    width: fit-content;
+    transition: ease-in-out 80ms;
+    border: solid transparent;
+}
+
+.ok{
+    background: var(--bg-transparent);
+    color: #00b126;
+    visibility: visible;
+    border: solid #00b126;
+}

@@ -1,7 +1,8 @@
 .stages-setting-table{
-    width: fit-content;
+    width: max-content;
+    max-width: 1187px;
     margin-top: 20px;
-
+    
 }
 
 .label{
@@ -17,14 +18,24 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    width: 200px;
+    width: 150px;
     margin-left: 20px;
 }
 .stage-table-column > p{
     margin: 0;
     padding: 0;
 }
-
+.stage-label{
+    display: flex;
+    flex-direction: column;
+    font-size: smaller;
+    text-wrap: balance;
+    justify-content: center;
+}
+.stage-label > p{
+    margin: 0;
+    padding: 0;
+}
 
 .stage-index{
     margin-left: 0;

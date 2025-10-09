@@ -38,7 +38,7 @@ class Shop{
         this._pages = undefined 
     }
 
-    _setShop({shop_id, shop_name, tables, stages, discounts, roles, categories, pages})
+    _setShop({shop_id, shop_name, tables, stages, discounts, roles, categories, pages, employees})
     {
         this._shopID = shop_id
         this._shopName = shop_name
@@ -46,6 +46,7 @@ class Shop{
         this._tables = tables && tables 
         this._stages = stages && stages
         this._discounts = discounts && discounts
+        this._employees = employees && employees
         this._roles = roles && roles
         this._isChosen = true
         this._pages = pages 
@@ -86,6 +87,14 @@ class Shop{
     async closeOrder(orderID, closeStatus){
         return await OrderService.closeOrder(orderID, closeStatus, this._user, this.shopID)
     }
+
+    async refresh(){
+        this.isChosen
+            ?
+                this._setShop(await ShopService.getShop(this.shopID, this._user))
+            :
+                null
+    }
     
     get shopID(){return this._shopID}
     get user(){return this._user}
@@ -94,7 +103,8 @@ class Shop{
     get categories(){return this._categories}
     get discounts(){return this._discounts}
     get tables(){return this._tables}
-    get pages(){return this._pages}
+    get pages(){console.log(this._pages); return this._pages; }
+    get employees(){return this._employees}
     get stages(){return this._stages}
     get roles(){return this._roles}
 }

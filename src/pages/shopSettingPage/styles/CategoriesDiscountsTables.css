@@ -11,14 +11,15 @@
 .tables-block-values,
 .discounts-block-values
 {
-    width:350px;
+    width:60%;
 }
 
 .categories-table,
 .tables-table,
 .discounts-table
 {
-    width:630px;
+    width:auto;
+    margin-right: 20px;
 
 }
 

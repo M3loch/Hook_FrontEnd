@@ -33,7 +33,7 @@ function Order({order}){
     const [compressed, setCompressed] = useState(true)
 
  return (
-    <div className={compressed ? "order is-comressed" : "order"}>
+    <div className={"order"}>
         <div className="modals">
             {   closeOrderModal && 
                 <CloseOrderModal 

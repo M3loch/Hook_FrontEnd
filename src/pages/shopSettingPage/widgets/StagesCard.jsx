@@ -34,12 +34,12 @@ function StageCard({Stage, stageList, setStageList, index}){
             </div>
             <div className='stage-table-column'>
                 {Stage.visible_to.map((role)=>{
-                    return <p>{role}</p>
+                    return <p key={crypto.randomUUID()}>{role}</p>
                 })}
             </div>
             <div className='stage-table-column'>
                 {Stage.edit_permission.map((role)=>{
-                    return <p>{role}</p>
+                    return <p key={crypto.randomUUID()}>{role}</p>
                 })}
             </div>
             <Button 

@@ -30,6 +30,7 @@
     flex-direction: row;
     justify-content: space-between;
     min-height: 66px;
+    height: 100%;
     align-items: center;
     background: var(--field-value);
     color: var(--text-dark);
@@ -37,22 +38,24 @@
 }
 
 .block-value > p {
-    margin-left: 10px;
+    margin-left: 20px;
     text-wrap: wrap;
+    text-wrap-style:balance;
+    white-space: unset;
 }
 
 .block-value > button{
     width: fit-content;
     padding:6px 7px;
+    margin-right: 10px;
+    box-sizing: border-box;
 }
 .cross{
     width: 20px;
-    margin-right: 10px;
 }
 .block-controls{
     display: flex;
     flex-direction: row; 
-    width: auto;
     align-items: center;
     justify-content: center;
     background: var(--field-value);
@@ -60,7 +63,6 @@
     border-bottom: solid var(--text-dark) 1px;
     color: var(--text-dark);
     flex-shrink: 0;
-    flex-grow: 1;
     box-sizing: border-box;
 }
 .block-label > p{

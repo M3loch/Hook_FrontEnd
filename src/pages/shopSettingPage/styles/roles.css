@@ -1,5 +1,6 @@
 .role-table {
-    width: 630px;
+    width: auto;
+    margin-right: 20px;
 }
 
 .role-block-label{
@@ -9,5 +10,6 @@
 
 
 .role-block-values{
-    width: 350px;
+    width:60%;
 }
+

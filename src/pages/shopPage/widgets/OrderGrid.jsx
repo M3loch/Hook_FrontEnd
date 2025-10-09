@@ -35,12 +35,17 @@ function OrderGrid({
                     )
                 } 
             )}
-            <Button 
-                clickEvent={setCreateOrderModal} 
-                value={true}
-                innerText={'Создать Заказ'}
-                className={'new-order-button'}
-            />
+            {
+                shop.pages.orders
+                    ?
+                        <Button 
+                            clickEvent={setCreateOrderModal} 
+                            value={true}
+                            innerText={'Создать Заказ'}
+                            className={'new-order-button'}
+                        />
+                    : null
+            }
         </div>
     ) 
 }

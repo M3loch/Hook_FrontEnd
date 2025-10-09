@@ -89,7 +89,8 @@ class User{
 
     async logIn(phoneNumber, pass) {
         const response = await AuthService.logIn(phoneNumber, pass)
-        response.isExist && this._setUser(response.user) & this._setToken(response.user.access_token)
+        response.isExist && this._setUser(response.user)
+        response.isExist && this._setToken(response.user.access_token)
         this._setIsAuth(response.isExist)
         return response.isExist
     }
